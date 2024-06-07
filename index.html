@@ -1,9 +1,88 @@
-<!doctype html>
-<html>
-  <head>
-    <title>hi</title>
-  </head>
-  <body>
-    <p>idk how you got here But I am Not Done Yet.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mystis world</title>
+    <link rel="icon" href="fav.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/121d9ba809.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: DM Sans, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #43A047;
+        }
+        .main, .links, .things {
+            border-radius: 10px;
+            background-color: #111;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            transform: translateX(-300px);
+            filter: blur(5px);
+            animation: getInHere 1.5s forwards ease-in-out;
+        }
+        .links {
+          margin-top: 20px;
+          animation-delay: 0.1s;
+        }
+        .things {
+          margin-top: 20px;
+          animation-delay: 0.2s;
+        }
+        .links a {color: white;}
+        .links a i {transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
+        .links a img {transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
+        .links a:hover i {transform: scale(1.1) rotate(5deg) translateY(-8px);}
+        .links a:hover img {transform: scale(1.1) rotate(5deg);}
+        .invertTH { filter: invert(100%); transform: translateY(8px); }
+      @keyframes getInHere {
+        50% {
+          -webkit-filter: blur(10px);
+        }
+        100% {
+            transform: translateX(0px); 
+            -webkit-filter: blur(0px);
+        }
+      }
+    </style>
+    <script>
+      function setHiText() {
+          var languageCode = navigator.language || navigator.userLanguage;
+          var hiText = document.getElementById('hitxt');
+          switch (true) {
+                case languageCode.startsWith('cs'):
+                    hiText.textContent = 'ahoj';
+                    break;
+                default:
+                    aboutText.textContent = 'hello';
+            }
+      }
+      window.onload = setHiText;
+    </script>
+</head>
+<body>
+    <div class="main">
+        <h1 id="hitxt">hello</h1>
+        <p>you can call me mystically, mysti or milly</p>
+        <p>she/they 15</p>
+        <p>i have coding experience in Haxe, C# and HTML</p>
+        <p>i like sweden and material design</p>
+    </div>
+    <div class="links">
+      <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl"></i></a>
+      <a href="https://toyhou.se/mystically"><img src="svg/icon-toyhouse.svg" alt="toyhouse" width="32px" height="32px" class="invertTH"></a>
+      <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl"></i></a>
+    </div>
+    <div class="things">
+      <h1>things i have created</h1>
+      <p style="color: red;">WORK IN PROGRESS</p>
+    </div>
+</body>
 </html>
