@@ -42,6 +42,17 @@
         .links a:hover i {transform: scale(1.1) rotate(5deg) translateY(-8px);}
         .links a:hover img {transform: scale(1.1) rotate(5deg);}
         .invertTH { filter: invert(100%); transform: translateY(8px); }
+
+        #last-updated-text {
+            position: fixed;
+            left: 10px;
+            color: #444;
+            opacity: 0.7;
+            font-size: 16px;
+            filter: blur(5px);
+            animation: getInHere 1.5s forwards ease-in-out;
+        }
+        #last-updated-text {bottom: -10px;}
       @keyframes getInHere {
         50% {
           -webkit-filter: blur(10px);
@@ -49,6 +60,7 @@
         100% {
             transform: translateX(0px); 
             -webkit-filter: blur(0px);
+            visibility: visible;
         }
       }
     </style>
@@ -61,10 +73,52 @@
                     hiText.textContent = 'ahoj';
                     break;
                 default:
-                    aboutText.textContent = 'hello';
+                    hiText.textContent = 'hello';
             }
       }
-      window.onload = setHiText;
+      
+      function getRT(date) {
+            const now = new Date();
+            const convert = Math.floor((now - date) / 1000);
+            const rtf = new Intl.RelativeTimeFormat('en', {numeric: 'auto'});
+            let i; let u;
+
+            switch (true) {
+                case (i = Math.floor(convert / 31536000)) >= 1:
+                    u = 'year';
+                    break;
+                case (i = Math.floor(convert / 2592000)) >= 1:
+                    u = 'month';
+                    break;
+                case (i = Math.floor(convert / 86400)) >= 1:
+                    u = 'day';
+                    break;
+                case (i = Math.floor(convert / 3600)) >= 1:
+                    u = 'hour';
+                    break;
+                case (i = Math.floor(convert / 60)) >= 1:
+                    u = 'minute';
+                    break;
+                default:
+                    i = seconds;
+                    u = 'second';
+            }
+            return rtf.format(-i, u);
+        }
+      async function getRepoData() {
+            try {
+                const commitData= await fetch('https://api.github.com/repos/mystically11/mystihouse/commits');
+                const commits = await commitData.json();
+                const lastUpdate = new Date(commits[0].commit.author.date);
+                document.getElementById('last-updated-text').textContent = `Last Update: ${getRT(lastUpdate)}`;
+            } catch (error) {
+                console.error('oops fetching github data didnt work:', error);
+            }
+        }
+      window.onload = () => {
+          setHiText();
+          getRepoData();
+      };
     </script>
 </head>
 <body>
@@ -84,5 +138,6 @@
       <h1>things i have created</h1>
       <p style="color: red;">WORK IN PROGRESS</p>
     </div>
+    <p id="last-updated-text"">Last Update: ?</p>
 </body>
 </html>
