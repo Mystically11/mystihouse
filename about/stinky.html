@@ -12,7 +12,8 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #FF7043;
+            --background-color: #FF7043;
+            animation: echt 1.5s forwards ease-in;
         }
         .dni-list {
             border-radius: 10px;
@@ -27,6 +28,21 @@
         button {
             color: #43A047;
             transform: translateY(20px);
+        }
+
+        a {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            color: black;
+            text-decoration: none;
+        }
+
+        @keyframes echt {
+            from {background-color: gray;}
+            to {background-color: #FF7043;}
         }
 
     </style>
@@ -47,7 +63,7 @@
         </ul>
     </div>
     <div>
-        <button onclick="index.html">Return to main page</button>
+        <a href="../index.html">Return to main page</a>
     </div>
 </body>
 </html>

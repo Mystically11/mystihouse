@@ -13,9 +13,9 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #43A047;
+            background:#43A047;
         }
-        .main, .links, .things {
+        .main, .links, .things{
             border-radius: 10px;
             background-color: #111;
             color: white;
@@ -23,17 +23,27 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
-            transform: translateX(-300px);
+            transform: translateY(-700px);
             filter: blur(5px);
-            animation: getInHere 1.5s forwards ease-in-out;
+            box-shadow: 0px 2px 15px lightblue;
+            animation: getInHere 2.5s forwards ease-out;
+        }
+        .main a {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            border: #43A047 solid;
+            display: inline-block;
+            color: black;
+            text-decoration: none;
         }
         .links {
           margin-top: 20px;
-          animation-delay: 0.1s;
+          animation-delay: -0.1s;
         }
         .things {
           margin-top: 20px;
-          animation-delay: 0.2s;
+          animation-delay: -0.2s;
         }
         .links a {color: white;}
         .links a i {transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
@@ -57,7 +67,7 @@
           -webkit-filter: blur(10px);
         }
         100% {
-            transform: translateX(0px); 
+            transform: translateY(0px); 
             -webkit-filter: blur(0px);
             visibility: visible;
         }
@@ -115,7 +125,7 @@
             }
         }
       window.onload = () => {
-          setHiText();
+          //setHiText();
           getRepoData();
       };
     </script>
@@ -128,6 +138,8 @@
         <p>she/they | 15</p>
         <p>i have coding experience in haxe, C# and html</p>
         <p>i like sweden and material design</p>
+        <a href="about/stinky.html">DNI List</a>
+        <!--<p style="text-align: left; font-family: Consolas, sans-serif;">Last online: ?</p>*/-->
     </div>
     <div class="links">
       <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl"></i></a>
@@ -135,7 +147,7 @@
       <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl"></i></a>
     </div>
     <div class="things">
-      <h1>things i have created</h1>
+      <h1>my creations</h1>
       <p style="color: red;">WORK IN PROGRESS</p>
     </div>
     <p id="last-updated-text"">Last Update: ?</p>
