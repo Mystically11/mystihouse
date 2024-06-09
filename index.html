@@ -45,6 +45,9 @@
           margin-top: 20px;
           animation-delay: -0.2s;
         }
+        #sad {
+            color: white;
+        }
         .links a {color: white;}
         .links a i {transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
         .links a img {transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
@@ -62,6 +65,10 @@
             animation: getInHere 1.5s forwards ease-in-out;
         }
         #last-updated-text {bottom: -10px;}
+        #mario {
+            animation: didYouSee 120s linear infinite;
+            transform: translateY(-600px);
+        }
       @keyframes getInHere {
         50% {
           -webkit-filter: blur(10px);
@@ -72,6 +79,12 @@
             visibility: visible;
         }
       }
+      @keyframes didYouSee {
+        0% { transform: translateX(-10000px); }
+        50% { transform: translateX(1500px); }
+        100% { transform: translateX(30000px); }
+      }
+            
     </style>
     <script>
       /*function setHiText() {
@@ -150,6 +163,7 @@
       <h1>my creations</h1>
       <p style="color: red;">WORK IN PROGRESS</p>
     </div>
+    <img id="mario" src="didyouseeit.gif" alt="mario?" width="60px">
     <p id="last-updated-text"">Last Update: ?</p>
 </body>
 </html>
