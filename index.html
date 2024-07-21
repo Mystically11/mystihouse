@@ -7,95 +7,82 @@
     <link rel="icon" href="fav.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/121d9ba809.js" crossorigin="anonymous"></script>
     <style>
+
         body {
-            font-family: DM Sans, sans-serif;
+            width: 100%;
+            height: 100vh;
+
+            background: rgb(26,79,216);
+            background: -moz-linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
+            background: -webkit-linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
+            background: linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
+            
+            font-family: Consolas, sans-serif;
             display: flex;
-            justify-content: center;
             align-items: center;
             flex-direction: column;
-            background:#43A047;
+
         }
         .main, .links, .things{
             border-radius: 10px;
-            background-color: #111;
-            color: white;
             padding: 20px;
             max-width: 600px;
             width: 100%;
+
+            color: white;
+            background-color: black;
+
             text-align: center;
-            transform: translateY(-700px);
-            filter: blur(5px);
-            box-shadow: 0px 2px 15px lightblue;
-            animation: getInHere 2.5s forwards ease-out;
+            box-shadow: 0px 2px 10px black;
         }
+
         .main a {
-            background-color: white;
-            border-radius: 10px;
             padding: 10px 20px;
-            border: #43A047 solid;
+            border-radius: 10px;
+
+            background-color: white;
             display: inline-block;
             color: black;
+
             text-decoration: none;
+            transition: transform 0.25s ease;
         }
-        .links {
-          margin-top: 20px;
-          animation-delay: -0.1s;
-        }
-        .things {
-          margin-top: 20px;
-          animation-delay: -0.2s;
-        }
-        #sad {
-            color: white;
-        }
+        
+        .main a:hover { transform: scale(1.1); }
+
+        .links { margin-top: 20px; }
         .links a {color: white;}
         .links a i {transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
         .links a:hover i {transform: scale(1.1) rotate(5deg) translateY(-8px);}
+        
+        .things { margin-top: 20px; }
+
+        #sad { color: white; }
 
         #last-updated-text {
-            position: fixed;
+            bottom: -10px;
             left: 10px;
-            color: #444;
-            opacity: 0.7;
             font-size: 16px;
-            filter: blur(5px);
-            animation: getInHere 1.5s forwards ease-in-out;
+            opacity: 0.7;
+            
+            color: #444;
+
+            position: fixed;
         }
-        #last-updated-text {bottom: -10px;}
+
         #mario {
             animation: didYouSee 120s linear infinite;
             transform: translateY(-600px);
         }
-      @keyframes getInHere {
-        50% {
-          -webkit-filter: blur(10px);
+
+        @keyframes didYouSee {
+            0% { transform: translateX(-10000px); }
+            50% { transform: translateX(1500px); }
+            100% { transform: translateX(30000px); }
         }
-        100% {
-            transform: translateY(0px); 
-            -webkit-filter: blur(0px);
-            visibility: visible;
-        }
-      }
-      @keyframes didYouSee {
-        0% { transform: translateX(-10000px); }
-        50% { transform: translateX(1500px); }
-        100% { transform: translateX(30000px); }
-      }
             
     </style>
     <script>
-      /*function setHiText() {
-          var languageCode = navigator.language || navigator.userLanguage;
-          var hiText = document.getElementById('hitxt');
-          switch (true) {
-                case languageCode.startsWith('se'):
-                    hiText.textContent = 'Hej!';
-                    break;
-                default:
-                    hiText.textContent = 'Hello!';
-            }
-      }*/
-      
       function getRT(date) {
             const now = new Date();
             const convert = Math.floor((now - date) / 1000);
@@ -129,9 +116,9 @@
                 const commitData= await fetch('https://api.github.com/repos/mystically11/mystihouse/commits');
                 const commits = await commitData.json();
                 const lastUpdate = new Date(commits[0].commit.author.date);
-                document.getElementById('last-updated-text').textContent = `Last Update: ${getRT(lastUpdate)}`;
+                document.getElementById('last-updated-text').textContent = `last update: ${getRT(lastUpdate)}`;
             } catch (error) {
-                console.error('oops fetching github data didnt work:', error);
+                document.getElementById('last-updated-text').textContent = `last update: i dont know`;
             }
         }
       window.onload = () => {
@@ -146,20 +133,23 @@
     </div>
     <div class="main">
         <img src="fav.ico" width="128px" height="128px">
-        <h1 id="hitxt" style="color:#43A047;">hi</h1>
-        <p>you can call me mystically or mysti</p>
-        <p>i have coding experience in haxe, C# and html</p>
-        <!--<p style="text-align: left; font-family: Consolas, sans-serif;">Last online: ?</p>*/-->
+
+        <h1 id="hitxt";">Hello</h1>
+
+        <p>I Am Mystically. you can also call me mysti</p>
+        <p>im a minor</p>
+        <p>any pronouns, she/her preferred</p>
+        <p>i code and make music</p>
+
+        <a href="about/stinky.html">dni list</a>
+        <a href="about/holdon.html">read byi</a>
     </div>
     <div class="links">
-      <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl"></i></a>
-      <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl"></i></a>
+      <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
+      <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
     </div>
-    <!--<div class="things">
-      <h1>my creations</h1>
-      <p style="color: red;">WORK IN PROGRESS</p>
-    </div>-->
     <img id="mario" src="didyouseeit.gif" alt="mario?" width="60px">
-    <p id="last-updated-text"">Last Update: ?</p>
+
+    <p id="last-updated-text"">last update: ?</p>
 </body>
 </html>
