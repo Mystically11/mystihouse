@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>mystis world</title>
+
+    <link rel="icon" href="../fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://kit.fontawesome.com/121d9ba809.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            height: 100vh;
+
+            background: rgb(26,79,216);
+            background: -moz-linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
+            background: -webkit-linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
+            background: linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
+            
+            font-family: Consolas, sans-serif;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .main, .links, .things{
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+
+            color: white;
+            background-color: black;
+
+            text-align: center;
+            box-shadow: 0px 2px 10px black;
+        }
+
+        .main a {
+            padding: 10px 20px;
+            border-radius: 10px;
+
+            background-color: white;
+            display: inline-block;
+            color: black;
+
+            text-decoration: none;
+            transition: transform 0.25s ease;
+        }
+        
+        .main a:hover { transform: scale(1.1); }
+
+        .links { margin-top: 20px; }
+        .links a i {color: white; transition: transform 0.5s ease-in-out; padding-left: 0.5em; padding-right: 0.5em;}
+        .links a:hover i {transform: scale(1.1) rotate(5deg) translateY(-8px);}
+
+        .links a.discord-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .links a.discord-tooltip .discord-tooltip-text {
+            width: 150px;
+            border-radius: 5px;
+            padding: 5px 0;
+            bottom: 190%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+
+            background-color: black;
+            color: #fff;
+            box-shadow: 0px 2px 10px black;
+
+            visibility: hidden;
+            text-align: center;
+            position: absolute;
+
+            transition: opacity 0.3s;
+        }
+
+        .links a.discord-tooltip:hover .discord-tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .things { margin-top: 20px; }
+
+        #sad { color: white; }
+
+        #last-updated-text {
+            bottom: -10px;
+            left: 10px;
+            font-size: 16px;
+            opacity: 0.7;
+            
+            color: #444;
+
+            position: fixed;
+        }
+
+        #mario {
+            animation: didYouSee 120s linear infinite;
+            transform: translateY(-600px);
+        }
+
+        @keyframes didYouSee {
+            0% { transform: translateX(-10000px); }
+            50% { transform: translateX(1500px); }
+            100% { transform: translateX(30000px); }
+        }
+            
+    </style>
+    <script src="../scripts/scrapeGithubData.js"></script>
+</head>
+<body>
+    <div>
+        <noscript><h2 style="color: salmon; text-align: center;">❌ allowing JavaScript is recommended for full functionality ❌</h2></noscript>
+        <h2 style="color: yellow; text-align: center;">⚠️ THIS PAGE IS IN THE WORKS NOT EVERYTHING IS LISTED HERE YET ⚠️</h2>
+    </div>
+    <div class="main">
+        <img src="../fav.ico" width="128px" height="128px">
+
+        <h1 id="hitxt";">Hello</h1>
+
+        <p>I Am Mystically. you can also call me mysti</p>
+        <p>im a minor</p>
+        <p>any pronouns, she/her preferred</p>
+        <p>i code and make music</p>
+
+        <a href="stinky.html">dni list</a>
+        <!--<a href="two.html" style="background-color: lightskyblue;">more things!</a>-->
+        <a href="holdon.html">read byi</a>
+    </div>
+    <div class="links">
+        <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
+        <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
+        <a class="discord-tooltip">
+            <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
+            <span class="discord-tooltip-text">@mystically</span>
+        </a>
+    </div>
+    <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
+
+    <p id="last-updated-text" data-last-update>last update: </p>
+</body>
+</html>

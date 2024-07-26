@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRUB Bootloader</title>
+    <style>
+        @font-face { font-family: VGA DOS; src: url('../fonts/VGA.ttf'); } 
+        body {
+            margin-top: 100px;
+            height: 100vh;
+
+            color: #ccc;
+            background-color: black;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+
+            font-family: VGA DOS, sans-serif;
+        }
+        
+        .bootloader {
+            width: 90%;
+            max-width: 800px;
+            padding: 10px;
+            font-size: 20px;
+
+            border: 3px solid #ccc;
+
+            text-align: left;
+        }
+
+        .bootloader ul { list-style: none; padding: 0; margin: 0; }
+        .bootloader ul li { border: 1px solid transparent; }
+        
+        .bootloader ul li.active {
+            border: 1px solid #ccc;
+            background-color: #ccc;
+            color: black;
+        }
+
+        .help-me-text {
+            font-size: 24px;
+            max-width: 800px;
+
+            text-align: center;
+        }
+
+        .that-underscore-i-hate {
+            left: 10px;
+            font-size: 32px;
+            margin-top: -100px;
+
+            position: absolute;
+
+            animation: flashy 0.3s step-end infinite;
+        }
+
+        @keyframes flashy {
+            from, to {
+                color: transparent;
+            }
+            50% {
+                color: white;
+            }
+        }
+    </style>
+    <script src="../scripts/scrapeGithubData.js"></script>
+</head>
+<body>
+    <div class="grub-text">
+        <h1 style="font-weight: 100;">GNU GRUB  version 2.06</h1>
+    </div>
+    <div class="bootloader">
+        <ul>
+            <li class="active" id="versionText11" grab-url="../about/index.html" data-commit-count>Mystically's Profile Page v1</li>
+            <li grab-url="https://www.youtube.com/watch?v=GKfr5S5Q3OY">Memory test (memtest86+)</li>
+            <li grab-url="https://www.youtube.com/watch?v=3z7aiZa1qO4">Memory test (memtest86+, serial console 115200)</li>
+            <br><br><br><br><br><br><br><br><br>
+        </ul>
+    </div>
+    <div class="help-me-text">
+        <p>Use the ↑ and ↓ keys to select which entry is highlighted.</p>
+        <p>Press enter to boot the selected OS, 'e' to edit the commands before booting or 'c' for a command-line.</p>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const options = document.querySelectorAll('.bootloader ul li');
+
+        function updateIndex() {
+            options.forEach((option, index) => {
+                if(index === currentIndex) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            switch(event.key) {
+                case "Enter":
+                    const selectedOption = options[currentIndex];
+                    const url = selectedOption.getAttribute('grab-url');
+
+                    if (url) {
+                        document.body.innerHTML = '';
+
+                        const fuckingUnderscore = document.createElement('div');
+
+                        fuckingUnderscore.classList.add('that-underscore-i-hate');
+                        fuckingUnderscore.textContent = '_';
+
+                        document.body.appendChild(fuckingUnderscore);
+                        
+                        setTimeout(() => {
+                            window.location.href = url;
+                        }, 2000);
+                    }
+                    break;
+                case 'ArrowUp':
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : options.length - 1;
+                    break;
+                case "ArrowDown":
+                    currentIndex = (currentIndex < options.length - 1) ? currentIndex + 1 : 0;
+                    break;
+                case "c":
+                    window.location.href = "https://hackertyper.net/";
+                    break;
+                case "e":
+                    no();
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3500);
+                    break;
+            }
+            updateIndex();
+        });
+
+        function no() {
+            const textNodes = [];
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+            let node;
+
+            while (node = walker.nextNode()) {
+                textNodes.push(node);
+            }
+
+            textNodes.forEach(textNode => {
+                textNode.nodeValue = 'No';
+            });
+        }
+    </script>
+</body>
+</html>
