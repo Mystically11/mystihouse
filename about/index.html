@@ -22,14 +22,13 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            overflow: hidden;
         }
 
+        
         .main, .links, .things{
             border-radius: 10px;
             padding: 20px;
             max-width: 600px;
-            width: 100%;
 
             color: white;
             background-color: black;
@@ -93,7 +92,6 @@
 
         #last-updated-text {
             bottom: -10px;
-            left: 10px;
             font-size: 16px;
             opacity: 0.7;
             
@@ -112,9 +110,19 @@
             50% { transform: translateX(1500px); }
             100% { transform: translateX(30000px); }
         }
+
+        @media (min-width: 769px) { 
+            .main, .links, .things { width: 100%; } 
+            #last-updated-text { left: 10px; }
+        }
+        @media (max-width: 768px) {
+            .main, .links, .things { width: 90%; } 
+            #last-updated-text {text-align: center;}
+        }
             
     </style>
     <script src="../scripts/scrapeGithubData.js"></script>
+    <script src="../scripts/utils.js"></script>
 </head>
 <body>
     <div>
@@ -139,11 +147,17 @@
     <div class="links">
         <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
         <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
-        
-        <a class="discord-tooltip">
+
+        <a class="discord-tooltip" id="discord-tooltip">
             <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
             <span class="discord-tooltip-text">@mystically</span>
         </a>
+        
+        <script>
+            document.getElementById('discord-tooltip').addEventListener('click', function() {
+                copyToClipboard('@mystically');
+            });
+        </script>
     </div>
 
     <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">

@@ -58,6 +58,18 @@
             animation: flashy 0.3s step-end infinite;
         }
 
+        .help-me-mobile-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 3px solid #fff;
+            border-radius: 0px;
+            cursor: pointer;
+            background-color: transparent;
+            color: white;
+            transition: background-color 0.02s, box-shadow 0.02s;
+            font-family: VGA DOS, sans-serif;
+        }
+
         @keyframes flashy {
             from, to {
                 color: transparent;
@@ -66,12 +78,16 @@
                 color: white;
             }
         }
+
+        @media (max-width: 768px) { .help-me-text { display: none; } .help-me-mobile-buttons { display: block; } }
+        @media (min-width: 769px) { .help-me-text { display: block; } .help-me-mobile-buttons { display: none; } }
+
     </style>
     <script src="../scripts/scrapeGithubData.js"></script>
 </head>
 <body>
     <div class="grub-text">
-        <h1 style="font-weight: 100;">GNU GRUB  version 2.06</h1>
+        <h1 style="text-align: center; font-weight: 100;">GNU GRUB  version 2.06</h1>
     </div>
     <div class="bootloader">
         <ul>
@@ -84,6 +100,12 @@
     <div class="help-me-text">
         <p>Use the ↑ and ↓ keys to select which entry is highlighted.</p>
         <p>Press enter to boot the selected OS, 'e' to edit the commands before booting or 'c' for a command-line.</p>
+    </div>
+    <div class="help-me-mobile-buttons">
+        <br>
+        <button em-key="ArrowUp" em-code="ArrowUp">Arrow Up</button>
+        <button em-key="Enter" em-code="Enter">Enter</button>
+        <button em-key="ArrowDown" em-code="ArrowDown">Arrow Down</button>
     </div>
     <script>
         let currentIndex = 0;
@@ -98,6 +120,26 @@
                 }
             });
         }
+
+        document.querySelectorAll('.help-me-mobile-buttons button[em-key]').forEach(button => {
+            button.addEventListener('click', function() {
+            const key = button.getAttribute('em-key');
+            const code = button.getAttribute('em-code');
+            const event = new KeyboardEvent('keydown', {
+                bubbles: true,
+                cancelable: true,
+                key: key,
+                code: code,
+            });
+
+            document.dispatchEvent(event);
+            
+            button.disabled = true;
+            setTimeout(() => {
+                button.disabled = false;
+            }, 100);
+            });
+        });
 
         document.addEventListener('keydown', (event) => {
             switch(event.key) {

@@ -11,6 +11,10 @@
 
     <link rel="icon" href="fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <script src="https://kit.fontawesome.com/121d9ba809.js" crossorigin="anonymous"></script>
     <style>
@@ -27,13 +31,28 @@
             overflow: hidden;
         }
 
-        .megatrends {
-            margin-top: -20px;
-            margin-left: -350px;
-            scale: 0.75;
-
-            align-items: left;
+        /* MOBILE SHIT */
+        .mobile-set p {
+            text-align: center;
+            justify-content: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-family: Montserrat, sans-serif;
+            font-size: 26px;
         }
+        h2 {
+            text-align: center;
+            font-family: Consolas, sans-serif;
+        }
+
+        /* DESKTOP SHIT */
+        .megatrends {
+                margin-top: -20px;
+                margin-left: -350px;
+                scale: 0.75;
+
+                align-items: left;
+            }
 
         .text {
             margin-left: 5px;
@@ -70,51 +89,70 @@
                 color: white;
             }
         }
+
+        @media (max-width: 768px) { .mobile-set { display: block; } .desktop-set { display: none; } }
+        @media (min-width: 769px) { .desktop-set { display: block; } .mobile-set { display: none; } }
     </style>
 </head>
 <body>
-    <div class="megatrends">
-        <img src="assets/bootloader/trends.png" >
-    </div>
-    <div class="text">
-        <p>I Do Not Know Inc.</p>
-        <p>ASUS M9C7AD BIOS Revision 1999</p>
-        <p>CPU : Intel(R) Celery N4000 CPU 1.10GHz</p>
-        <p>ㅤ Speed : 1.19GHz</p>
-        <br>
-        <p>Total Memory: 2048MB (DDR3-1666)</p>
-        <br>
-        <p>USB Devices total: 0 Drive, 1 Keyboard, 32890 Mice, 3 Hubs</p>
-        <br>
-        <br>
-        <p>Press ALT + F4 to run Setup</p>
+    <div class="mobile-set">
         <noscript>
-            <br>
-            <p style="color: red">Boot Error: JavaScript is not enabled. Please enable it and reboot the system.</p>
-            <h6>BE WARNED; THE SITE WILL BREAK EVENTUALLY BECAUSE MORE FUNCTIONALITY = MORE SCRIPTING!
-                if you're extremely paranoid and don't trust me... that's a shame... but you can click <a href="../about/index.html"> this</a> to go to my profile page.</h6>
+            <h2 style="color: yellow">🙁 JavaScript is disabled. Please enable it and reload the page for it to work properly</h2>
         </noscript>
-        <p id="oktext"></p>
-        <script>
+        <p>powered by</p><br><p style="font-weight: bold; max-width: 100%"> $ Big Wall <br></p>
+        <p id="glag">
+            🦧🐵🐞🐦🦚🐃🦘🦄🦩🐹🦔🐡🐴🐟🐊🦮🐳🦋🦛🐩🐝🦙🦞🐒🐠🐻🦭🦢🐆🦢🦠🦨🐪🐙🐅🦭🦇🦀🦢🐀🦗🦉
+            🦦🐢🐷🐄🐾🦈🦑🦩🐇🐂🐀🦋🦂🐏🦏🦤🦅🦦🦌🦩🦦🦇🦋🦦🦊🦥🦢🐰🦪🐐🐘🐡🐈🦓🐰🐱🦥🐈🐪🦀🦇🐥
+            🦎🐓🐣🐊🐳🦢🦒🦘🐢🐉🐬🐰🦩🐅🐇🦜🦭🦘🦢🐒🐖🦩🐥🐧🦪🐀🦠🐭🦣🐹🦃🦞🦦🦢🐾🦣🐦🐺🦒🦡🦉🦃
+            🦄🦀🦇🦅🦧🐉🐰🦨🦧🐹🦒🐈🐯🦠🐀🦪🐕🐅🐦🦥🦡🦃🦄🦓🐭🦚🦜🦅🦥🦚🐡🦀🐁🐸🦉🦣🦞🦋🦋🦄🐭🐁
+            🦚🦤🐭🐹🦦🦞🦪🦥🦥🦭🦉🦓🐊🦫🐰🐬🦉🦠🦞🦧🦪🦩🐮🦡🦜🦠🦚🦈🦚🦮🦢🐪🦘🦢🦏🦩🐾🦜🦇🐋🦥🦧
+            🐥🦭🦚🦀🦮🦑🦅🦢🦉🦄🦆🦮🐵🦚🦭🦭🐶🐱🐠🦆🦢🦢🦓🐻🐆🐴🦫🦅🦦🦩🐼🦩🐦🦅🦭🦉🦄🦨🦄🦢🦛🐼
+            🐥🦉🐼🦮🐁🐈🦏🦏🦩🦊🦞🐼🐿🦘🦥🐭🦩🦉🦥🦣🦃🐖🦒🦢🦡🦢🐉🦩🦒🦇🐀🦫🐼🐁🦌🦓🐗🦢🐥🦭🐩🦭
+            🐕🦩🦎🦤🦁🦃🦤🦆🦊🐀🦥🦒🦭🦓🦇🦥🐯🦄🦩🦦🐧🦠🦉🦘🦪🦋🐗🦓🐶🦢🐘🦀🦏🦦🐈🦨🦄🐊🦏🦉🦓🦛
+            🦎🦏🦢🦛🐭🐇🦓🦩🐭🦢🦩🐦🦦🦆🦍🦛🦥🦡🦢🦢🦛🦜🦘🦧🦍🦭🦠🦍🦭🦧🦧🐊🦢🦦🐪🦩🦪🦌🦤🦢🐭🐁
+        </p>
+    </div>
 
-            setTimeout(() => {
-                document.getElementById("oktext").innerHTML += "<br><br><br><br>ALL OK";
-            }, 1500);
+    <div class="desktop-set">
+        <div class="megatrends">
+            <img src="assets/bootloader/trends.png" >
+        </div>
+        <div class="text">
+            <p>I Do Not Know Inc.</p>
+            <p>ASUS M9C7AD BIOS Revision 1999</p>
+            <p>CPU : Intel(R) Celery N4000 CPU 1.10GHz</p>
+            <p>ㅤ Speed : 1.19GHz</p><br>
+            <p>Total Memory: 2048MB (DDR3-1666)</p><br>
+            <p>USB Devices total: 0 Drive, 1 Keyboard, 32890 Mice, 3 Hubs</p><br><br>
+            <p>Press ALT + F4 to run Setup</p>
+
+            <noscript>
+                <br><p style="color: red">Boot Error: JavaScript is not enabled. Please enable it and reboot the system.</p>
+                <h6>BE WARNED; THE SITE WILL BREAK EVENTUALLY BECAUSE MORE FUNCTIONALITY = MORE SCRIPTING!
+                    if you're extremely paranoid and don't trust me... that's a shame... but you can click <a href="../about/index.html"> this</a> to go to my profile page.</h6>
+            </noscript>
+
+            <p id="oktext"></p>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.getElementById("oktext").innerHTML += "<br><br><br><br>ALL OK";
+        }, 1500);
+        
+        setTimeout(() => {
+            document.body.innerHTML = '';
+            const fuckingUnderscore = document.createElement('div');
+
+            fuckingUnderscore.classList.add('that-underscore-i-hate');
+            fuckingUnderscore.textContent = '_';
+
+            document.body.appendChild(fuckingUnderscore);
             
             setTimeout(() => {
-                document.body.innerHTML = '';
-                const fuckingUnderscore = document.createElement('div');
-
-                fuckingUnderscore.classList.add('that-underscore-i-hate');
-                fuckingUnderscore.textContent = '_';
-
-                document.body.appendChild(fuckingUnderscore);
-                
-                setTimeout(() => {
-                    window.location.href = "bootloader/grub.html";
-                }, 1000);
-            }, 2000);
-        </script>
-    </div>
+                window.location.href = "bootloader/grub.html";
+            }, 1000);
+        }, 2000);
+    </script>
 </body>
 </html>
