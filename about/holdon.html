@@ -15,6 +15,8 @@
             background: -moz-linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);
             background: -webkit-linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);
             background: linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);
+            background-attachment: fixed;
+            background-size: cover;
 
             font-family: Consolas, sans-serif;
             display: flex;
@@ -40,7 +42,7 @@
             transform: translateY(20px);
         }
 
-        a {
+        #back {
             border-radius: 10px;
             padding: 10px;
             margin-top: 20px;
@@ -54,10 +56,10 @@
             text-decoration: none;
        
             
-            transition: transform 0.25s ease;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.25s ease;
         }
 
-        a:hover { transform: scale(1.1); }
+        #back:hover { transform: scale(0.95); background-color: black; color: white; }
 
         li {
             color: black;
@@ -69,8 +71,8 @@
 <body>
     <div class="header">
         <noscript><h2 style="color: white; text-align: center;">❌ JavaScript is disabled. Consider enabling it to avoid the site breaking. ❌</h2></noscript>
-        <h1>what you should know before talking to me</h1>
 
+        <h1>what you should know before talking to me</h1>
         <p>to prevent possible misunderstandings</p>
     </div>
     <div class="list">
@@ -83,7 +85,7 @@
         </ul>
     </div>
     <div>
-        <a href="index.html">Return to main page</a>
+        <a id="back" href="index.html">Return to main page</a>
     </div>
 </body>
 </html>
