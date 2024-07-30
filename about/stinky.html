@@ -23,6 +23,19 @@
             align-items: center;
             flex-direction: column;
         }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(255, 255, 255, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .dni-list {
             border-radius: 10px;
             padding: 40px;
@@ -68,6 +81,7 @@
     </style>
 </head>
 <body>
+    <div class="scanline"></div>
     <div class="dni-header">
         <noscript><h2 style="color: salmon; text-align: center;">❌ JavaScript is disabled. Consider enabling it to avoid the site breaking. ❌</h2></noscript>
         <h1>DNI LIST</h1>
@@ -86,6 +100,7 @@
     <div>
         <a id="back" href="index.html">Return to main page</a>
     </div>
+    <div><br></div>
 </body>
 </html>
 
