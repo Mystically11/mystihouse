@@ -38,7 +38,7 @@
             z-index: -1;
         }
 
-        .main, .links, .things{
+        .main, .links {
             border-radius: 10px;
             padding: 20px;
             max-width: 600px;
@@ -67,7 +67,7 @@
 
         .links { margin-top: 20px; }
 
-        .links a i {
+        .links a img, i {
             color: white; 
             padding-left: 0.5em; 
             padding-right: 0.5em;
@@ -75,7 +75,7 @@
             transition: transform 0.5s ease-in-out, color 0.5s ease-in-out; 
         }
 
-        .links a:hover i {transform: scale(1.1) rotate(5deg) translateY(-8px); color: lightgreen;}
+        .links a:hover i, .links a img:hover {transform: scale(1.1) rotate(5deg) translateY(-8px); color: lightgreen;}
 
         .links a.discord-tooltip {
             position: relative;
@@ -107,8 +107,14 @@
             visibility: visible;
             opacity: 1;
         }
-        
-        .things { margin-top: 20px; }
+
+        .do-not-the .expand-text::after, .hold-up .expand-text::after { transition: content 0.3s ease-in-out; }
+
+        .do-not-the .expand-text::after { content: 'DNI'; }
+        .hold-up .expand-text::after { content: 'BYI'; }
+
+        .do-not-the:hover .expand-text::after { content: 'Do not interact'; }
+        .hold-up:hover .expand-text::after { content: 'Before you interact'; }
 
         #sad { color: white; }
 
@@ -131,6 +137,15 @@
             0% { transform: translateX(-10000px); }
             50% { transform: translateX(1500px); }
             100% { transform: translateX(30000px); }
+        }
+
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         @media (min-width: 769px) { 
@@ -156,25 +171,25 @@
     <div class="main">
         <img src="../fav.ico" width="128px" height="128px">
 
-        <h1 id="hitxt";">Hello</h1>
+        <h1 id="hitxt";">hello !!</h1>
 
-        <p>I Am Mystically. you can also call me mysti</p>
-        <p>im a minor</p>
-        <p>any pronouns, she/her preferred</p>
+        <p>you can call me mystically or mysti</p>
+        <p>she/they</p>
         <p>i code and make music</p>
 
-        <a href="stinky.html">dni list</a>
-        <a href="two.html" style="background-color: lightskyblue;">read more</a>
-        <a href="holdon.html">read byi</a>
+        <a class="do-not-the" href="stinky.html"><span class="expand-text"></span> list</a>
+        <a href="two.html" style="background-color: lightskyblue;">about me !</a>
+        <a class="hold-up" href="holdon.html">read <span class="expand-text"></span></a>
     </div>
     <div class="links">
-        <a href="https://youtube.com/@Mystically"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
-        <a href="https://github.com/mystically11"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
+        <a href="https://youtube.com/@Mystically" target="_blank"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
+        <a href="https://github.com/mystically11" target="_blank"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
 
         <a class="discord-tooltip" id="discord-tooltip">
             <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
             <span class="discord-tooltip-text">@mystically</span>
         </a>
+        <a href="https://toyhou.se/mystically" target="_blank"><img src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg/revision/latest/thumbnail/width/360/height/360?cb=20230717001817" style="width: 35px; margin-top: -10px; margin-bottom: -8px; filter: invert();"></a>
         <script>
             document.getElementById('discord-tooltip').addEventListener('click', function() {
                 copyToClipboard('@mystically');
@@ -183,6 +198,7 @@
     </div>
 
     <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
+    
 
     <p id="last-updated-text" data-last-update>last update: </p>
 </body>

@@ -27,11 +27,11 @@ function getBirthday() {
 
     switch (daysUntil) {
         case 0 | 365:
-            return `IT'S MY BIRTHDAY! wow i am ${Math.floor(oldFreak + 1)} now`; 
+            return `MY BIRTHDAY TODAY? Yes. wow i am ${Math.floor(oldFreak + 1)} now`; 
         case 1:
             return `wow that is in ${daysUntil} day..`;
         default:
-            return `i Will be ${Math.floor(oldFreak + 1)} in ${daysUntil} days`;
+            return `i'll be ${Math.floor(oldFreak + 1)} in ${daysUntil} days`;
     }
 }
 
