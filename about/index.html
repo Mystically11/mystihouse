@@ -113,9 +113,6 @@
         .do-not-the .expand-text::after { content: 'DNI'; }
         .hold-up .expand-text::after { content: 'BYI'; }
 
-        .do-not-the:hover .expand-text::after { content: 'Do not interact'; }
-        .hold-up:hover .expand-text::after { content: 'Before you interact'; }
-
         #sad { color: white; }
 
         #last-updated-text {
@@ -151,6 +148,9 @@
         @media (min-width: 769px) { 
             .main, .links, .things { width: 100%; } 
             #last-updated-text { left: 10px; }
+
+            .do-not-the:hover .expand-text::after { content: 'Do not interact'; }
+            .hold-up:hover .expand-text::after { content: 'Before you interact'; }
         }
         @media (max-width: 768px) {
             .main, .links, .things { width: 90%; } 
@@ -177,9 +177,9 @@
         <p>she/they</p>
         <p>i code and make music</p>
 
-        <a class="do-not-the" href="stinky.html"><span class="expand-text"></span> list</a>
+        <a class="do-not-the" href="stinky.html"><span class="expand-text"></span></a>
         <a href="two.html" style="background-color: lightskyblue;">about me !</a>
-        <a class="hold-up" href="holdon.html">read <span class="expand-text"></span></a>
+        <a class="hold-up" href="holdon.html"><span class="expand-text"></span></a>
     </div>
     <div class="links">
         <a href="https://youtube.com/@Mystically" target="_blank"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
@@ -189,17 +189,17 @@
             <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
             <span class="discord-tooltip-text">@mystically</span>
         </a>
-        <a href="https://toyhou.se/mystically" target="_blank"><img src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg/revision/latest/thumbnail/width/360/height/360?cb=20230717001817" style="width: 35px; margin-top: -10px; margin-bottom: -8px; filter: invert();"></a>
+        <a href="https://toyhou.se/mystically" target="_blank"><img src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg" style="width: 35px; margin-top: -10px; margin-bottom: -8px; filter: invert();"></a>
         <script>
             document.getElementById('discord-tooltip').addEventListener('click', function() {
                 copyToClipboard('@mystically');
             });
         </script>
     </div>
+    <div><br><embed src="https://www.youtube.com/embed/aDSvA-iZOmg" width="320" height="320" title="Ted Gärdestad - I Know There's A Song"></embed></div>
 
     <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
     
-
     <p id="last-updated-text" data-last-update>last update: </p>
 </body>
 </html>
