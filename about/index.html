@@ -113,6 +113,18 @@
         .do-not-the .expand-text::after { content: 'DNI'; }
         .hold-up .expand-text::after { content: 'BYI'; }
 
+        .wasting-your-time-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* Mask color */
+            z-index: 9999;
+            animation: bye 1s steps(10, end) forwards;
+        }
+
+
         #sad { color: white; }
 
         #last-updated-text {
@@ -136,12 +148,12 @@
             100% { transform: translateX(30000px); }
         }
 
-        @keyframes scroll-text {
-            0% {
-                transform: translateX(100%);
+        @keyframes bye {
+            20% {
+                top: 0;
             }
             100% {
-                transform: translateX(-100%);
+                top: 100%;
             }
         }
 
@@ -163,6 +175,9 @@
 </head>
 <body>
     <div class="scanline"></div>
+
+    <div class="wasting-your-time-loader"></div>
+
     <div>
         <noscript><h2 style="color: salmon; text-align: center;">❌ JavaScript is disabled. Consider enabling it to avoid the site breaking. ❌</h2></noscript>
 
