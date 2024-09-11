@@ -9,32 +9,20 @@
 
     <style>
         body {
-            height: 100vh;
+            height: auto;
 
-            background: rgb(26,79,216);
+            /*background: rgb(26,79,216);
             background: -moz-linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
             background: -webkit-linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
-            background: linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);
-            background-attachment: fixed;
+            background: linear-gradient(180deg, rgba(26,79,216,1) 0%, rgba(60,153,255,1) 100%);*/
             background-size: cover;
+            background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 40) 100%);
 
             font-family: Consolas, sans-serif;
             display: flex;
             align-items: center;
             flex-direction: column;
             /*overflow: hidden;*/
-        }
-
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(255, 255, 255, 0.1) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: -1;
         }
 
         .main, .martina {
@@ -54,7 +42,7 @@
 
         .main button {
             padding: 2px 5px;
-            background-color: skyblue;
+            background-color: white;
             border-radius: 5px;
             border: none;
             color: black;
@@ -63,7 +51,8 @@
         }
 
         .main button:hover {
-            background-color: yellow;
+            background-color: black;
+            color: white;
             transform: scale(0.95) rotate(5deg);
         }
 
@@ -156,18 +145,19 @@
 
         #back { 
             border-radius: 10px;
-            padding: 10px;
+            padding: 8px;
             margin-top: 20px;
 
-            color: white;
+            color: black;
             text-decoration: none;
-            background-color: black;
+            background-color: white;
+            border: dashed white;
 
             display: inline-block;
             transition: background-color 0.5s ease, color 0.5s ease, transform 0.25s ease;
         }
 
-        #back:hover { transform: scale(0.9); background-color: skyblue; color: black;}
+        #back:hover { transform: scale(0.9); background-color: black; color: white;}
 
         @media (min-width: 769px) { 
             .main, .martina { width: 100%; }
@@ -192,15 +182,12 @@
 <body>
     <div class="scanline"></div>
     <div>
-        <noscript><h2 style="color: salmon; text-align: center;">❌ JavaScript is disabled. Consider enabling it to avoid the site breaking. ❌</h2></noscript>
-        <h2 style="color: yellow; text-align: center;">⚠️ THIS PAGE IS IN THE WORKS NOT EVERYTHING IS LISTED HERE YET ⚠️</h2>
-        <h1>MY WORLD</h1>
     </div>
     <div class="main">
-        <h1>about me !</h1>
-        <p id="birthday-text">i was born on the 31st of august (get-rt-value)</p>
-        <p>i can code in <a href="https://haxe.org/" target="_blank"><button>Haxe</button></a>, <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank"><button>JavaScript</button></a>,
-            <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)" target="_blank"><button>C#</button></a> and <a href="https://www.lua.org/"><button>Lua</button></a></p>
+        <h1>about me</h1>
+        <p id="birthday-text">mu birthday is on the 31st of august (get-rt-value)</p>
+        <p>i have coding experience in <a href="https://haxe.org/" target="_blank"><button>Haxe</button></a>, <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank"><button>JavaScript</button></a>
+            and <a href="https://kotlinlang.org/"><button>Kotlin</button></a></p>
 
         <p>↓ i can speak (CEF, N = Native): ↓</p>
         <div class="main-lang">
@@ -231,9 +218,9 @@
         </div>
     </div>
     <div class="martina">
-        <h1 style=" line-height: 2">MY SONA</h1>
-        <p style=" line-height: 0.01;">this is Martina. shes a marten.</p>
-        <p>if you wanna draw her, go ahead. make sure to show me 🙂</p>
+        <p style=" line-height: 1;">this is Martina. I represent myself with this sona.</p>
+        <p>you're free to draw her, if you're gonna post it somewhere make sure to tag me</p>
+        <p>for more examples, check out my <a href="https://toyhou.se/mystically" target="_blank">toyhouse</a></p>
 
         <div class="sona-grid">
             <div class="sona-container">
@@ -251,13 +238,7 @@
                 <a href="https://toyhou.se/25474023.martina#86042536" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/86042536_Aqy0PBIyHPemMBy.png" alt="martina-1"></a>
                 <div class="sona-credit"><a href="https://toyhou.se/unixversal" target=”_blank”>@unixversal</a></div>
             </div>
-            <div class="sona-container">
-                <a href="https://toyhou.se/25474023.martina#86078358" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/86078358_FuIJMMHm9iGbe9G.jpg" alt="martina-1"></a>
-                <div class="sona-credit"><a href="https://youtube.com/@syberyen" target=”_blank”>@syberyen</a></div>
-            </div>
-        </div>
-        <div class="sona-grid">
-            <div class="sona-container">
+            <div class="sona-container" style="margin-top: 20px">
                 <a href="https://toyhou.se/25474023.martina#86078392" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/thumbnails/86078392_fqZ_25474023.jpg" alt="martina-1"></a>
                 <div class="sona-credit"><a href="https://youtube.com/@syberyen" target=”_blank”>@syberyen</a></div>
             </div>

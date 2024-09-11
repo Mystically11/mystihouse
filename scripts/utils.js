@@ -1,8 +1,8 @@
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
-      console.log('copied Smiley face');
+      console.log('copied!');
     }).catch(function(error) {
-      console.error('not copied Sad face, error: ', error);
+      console.error('not copied.. error: ', error);
     });
 }
 
@@ -12,26 +12,18 @@ function getBirthday() {
     const birthday = new Date(year, 7, 31);
     const birthdayStatic = new Date('2008-08-31');
     
-    let targetDate;
+    let oldFreak = year - birthdayStatic.getFullYear() + 1;
 
-    if (today > birthday) {
-        targetDate = new Date(year + 1, 7, 31);
-    } else {
-        targetDate = birthday;
+    if (today < birthday) {
+        oldFreak--;
     }
-
-    const diff = targetDate - today;
-    const daysUntil = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-    const oldFreak = (birthday - birthdayStatic) / (1000 * 60 * 60 * 24 * 365.25);
+    const daysUntil = Math.ceil((new Date(year + 1, 7, 31) - today) / (1000 * 60 * 60 * 24));
 
     switch (daysUntil) {
         case 0 | 365:
-            return `MY BIRTHDAY TODAY? Yes. wow i am ${Math.floor(oldFreak + 1)} now`; 
-        case 1:
-            return `wow that is in ${daysUntil} day..`;
+            return `It's my birthday! i'm ${Math.floor(oldFreak)} now`; 
         default:
-            return `i'll be ${Math.floor(oldFreak + 1)} in ${daysUntil} days`;
+            return `i'll be ${Math.floor(oldFreak)} in ${daysUntil} days`;
     }
 }
 
