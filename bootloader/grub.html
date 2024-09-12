@@ -79,8 +79,8 @@
             }
         }
 
-        @media (max-width: 768px) { .help-me-text { display: none; } .help-me-mobile-buttons { display: block; } }
-        @media (min-width: 769px) { .help-me-text { display: block; } .help-me-mobile-buttons { display: none; } }
+        @media (max-width: 999px) { .help-me-text { display: none; } .help-me-mobile-buttons { display: block; } }
+        @media (min-width: 1000px) { .help-me-text { display: block; } .help-me-mobile-buttons { display: none; } }
 
     </style>
     <script src="../scripts/scrapeGithubData.js"></script>
@@ -103,9 +103,9 @@
     </div>
     <div class="help-me-mobile-buttons">
         <br>
-        <button em-key="ArrowUp" em-code="ArrowUp">Arrow Up</button>
-        <button em-key="Enter" em-code="Enter">Enter</button>
         <button em-key="ArrowDown" em-code="ArrowDown">Arrow Down</button>
+        <button em-key="Enter" em-code="Enter">Enter</button>
+        <button em-key="ArrowUp" em-code="ArrowUp">Arrow Up</button>
     </div>
     <script>
         let currentIndex = 0;

@@ -11,12 +11,13 @@
         body {
             height: 100vh;
 
-            background: rgb(251,140,0);
+            /*background: rgb(251,140,0);
             background: -moz-linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);
             background: -webkit-linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);
-            background: linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);
+            background: linear-gradient(180deg, rgba(251,140,0,1) 0%, rgba(255,167,38,1) 100%);*/
             background-attachment: fixed;
             background-size: cover;
+            background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(100, 100, 0) 100%);
 
             font-family: Consolas, sans-serif;
             display: flex;
@@ -41,11 +42,11 @@
             padding: 40px;
             line-height: 1.6;
             
-            color: black;
-            border-color: black;
-            background-color: white;
+            color: white;
+            border-color: yellow;
+            background-color: black;
 
-            border-style: solid;
+            border-style: dashed;
             text-align: left;
         }
         h1, p {text-align: center;}
@@ -70,8 +71,8 @@
 
         #back:hover { transform: scale(0.9); background-color: black; color: white;}
 
-        li {
-            color: black;
+        li, h1 {
+            color: white;
         }
         
 
@@ -80,9 +81,9 @@
 <body>
     <div class="scanline"></div>
     <div class="header">
-        <noscript><h2 style="color: white; text-align: center;">❌ JavaScript is disabled. Consider enabling it to avoid the site breaking. ❌</h2></noscript>
+        <noscript><h2 style="color: yellow; text-align: center;"> 😕 Looks like you have JavaScript disabled. Please enable it for full site functionality </h2></noscript>
 
-        <h1>what you should know before talking to me</h1>
+        <h1>some pointers before you engage conversations with me</h1>
     </div>
     <div class="list">
         <ul>
