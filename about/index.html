@@ -44,7 +44,7 @@
 
         .straw {
             padding: 20px;
-            margin-top: 160px;
+            margin-top: 100px;
             background-color: black;
             border-color: white;
             border-style: dashed;
@@ -130,6 +130,17 @@
             position: fixed;
         }
 
+        #mario {
+            bottom: 300px;
+            animation: didYouSee 10s linear infinite;
+            position: fixed;
+        }
+
+        @keyframes didYouSee {
+            0% { transform: translateX(-3000px); }
+            100% { transform: translateX(3000px); }
+        }
+
 
         @media (min-width: 769px) { 
             .main, .links, .things { width: 100%; } 
@@ -179,6 +190,8 @@
             });
         </script>
     </div>
+
+    <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
     
     <div class="straw">
         <p>Is this too formal and professional for you?</p>
