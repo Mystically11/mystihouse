@@ -11,8 +11,7 @@ function switchTheme() {
 }
 
 function applyTheme() {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    console.log("Saved theme:", savedTheme);
+    const savedTheme = localStorage.getItem("theme") || "dark";
     document.body.classList.toggle("light", savedTheme === "light");
     if (icon) {
         icon.classList.toggle("fa-moon", savedTheme !== "light");
