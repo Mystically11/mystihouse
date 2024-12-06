@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+    <title>mystis world</title>
+
+    <link rel="icon" href="../fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .light #th-icon, .light #mt-icon {
+            filter: none;
+        }
+
+        body {
+            height: auto;
+            min-height: 100vh;
+
+            background-attachment: fixed;
+            background-size: cover;
+            background: var(--bg-color);
+            
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow-x: hidden;
+
+            transition: color 0.3s;
+            gap: 10px;
+        }
+
+        @media (min-width: 769px) {
+            body {
+                justify-content: center;
+            }
+        }
+
+        body:not(.light) #th-icon, #mt-icon {
+            filter: invert();
+        }
+
+        @media (max-width: 768px) {
+            body {
+                height: 125vh;
+                overflow-y: scroll;
+            }
+        }
+
+        #starCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .main, .links {
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+
+            color: var(--text-color);
+            border-style: solid;
+            border-color: var(--element-color);
+
+            background-color: rgba(0, 0, 50, 0.025);
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .main, .links { width: 90%; } 
+        }
+
+        .straw {
+            padding: 20px;
+            border-radius: 10px;
+
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-color: var(--element-color);
+            border-style: solid;
+
+            text-decoration: none;
+            text-align: center;
+
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+        }
+
+        @media (min-width: 1525px) {
+            .straw {
+                left: 6%;
+                position: absolute;
+                margin: 0;
+                justify-content: center;
+            }
+        }
+
+        .main a {
+            padding: 7.5px 20px;
+            border-radius: 10px;
+
+            background-color: var(--element-color);
+            display: inline-block;
+            color: var(--text-color-inverted);
+
+            border-color: var(--element-color);
+            border-style: solid;
+
+            text-decoration: none;
+            transition: transform 0.25s ease, background-color 0.5s ease;
+        }
+        
+        .main a:hover { 
+            transform: scale(0.9); 
+            background-color: var(--bg-color);
+            color: var(--element-color);
+        }
+        
+        @media (max-width: 768px) {
+            .links { line-height: 3em; }
+        }
+
+        .links a img, i {
+            color: var(--element-color);
+            padding-left: 0.5em; 
+            padding-right: 0.5em;
+
+            transition: transform 0.5s ease-in-out, color 0.5s ease-in-out; 
+        }
+
+        .links a:hover i, .links a img:hover {transform: scale(1.1) rotate(5deg) translateY(-8px);}
+
+        .links a.discord-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .links a.discord-tooltip .discord-tooltip-text {
+            width: 150px;
+            border-radius: 5px;
+            padding: 5px 0;
+            bottom: 190%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+
+            background-color: var(--element-color);
+            color: var(--text-color-inverted);
+            box-shadow: 0px 2px 10px var(--element-color-inverted);
+
+            visibility: hidden;
+            text-align: center;
+            position: absolute;
+
+            transition: opacity 0.3s;
+        }
+
+        .links a.discord-tooltip:hover .discord-tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .changelog {
+            left: 72%;
+        
+            
+            border-radius: 10px;
+            border: solid var(--element-color);
+        
+            width: calc(100% - 40px);
+            max-width: 500px;
+            max-height: 30%;
+            height: auto; 
+            
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+            
+            overflow-y: scroll;
+            position: absolute;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            gap: 10px;
+
+            transition: color 0.3s;
+        }
+
+        @media (max-width: 1800px) {
+            .changelog {
+                top: inherit;
+                left: inherit;
+
+                position: inherit;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                flex-flow: column;
+            }
+        }
+        
+        .changelog h2, h3 { text-align: center; margin: 5px 0 0 0 ;}
+        
+        .changelog-container {
+            width: 75%;
+            position: relative;
+
+            text-align: center;
+            
+            background-color: var(--element-color-inverted);
+
+            border-radius: 10px;
+            border: 2px solid var(--element-color);
+
+            ul {
+                display: inline-block;
+                text-align: center;
+                list-style-position: inside;
+                padding-left: 0;  
+            }
+        }
+
+        #mario {
+            bottom: 100px;
+            animation: didYouSee 10s linear infinite;
+            position: absolute;
+        }
+
+        @keyframes didYouSee {
+            0% { transform: translateX(-3000px); }
+            100% { transform: translateX(3000px); }
+        }
+            
+    </style>
+    <script src="../scripts/scrapeGithubData.js"></script>
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/stars.js"></script>
+</head>
+<body>
+    <canvas id="starCanvas"></canvas>
+
+    <div>
+        <noscript><h2 style="color: salmon; text-align: center;"> 😕 Looks like you have JavaScript disabled. Please enable it for full site functionality. </h2></noscript>
+    </div>
+
+    <div class="main">
+        <img src="../assets/thumb2.png" style="border-radius: 20%;" width="128px" height="128px">
+
+        <h1 id="hitxt";">hello! 👋</h1>
+
+        <h2>you can call me <span style="color: var(--name-color)">Mysti <span style="color: var(--element-color)">or</span> Martina</span></h2>
+        <p id="yearn">she/her</p>
+        <p>yes i like coding, how could you tell?</p>
+
+        <a class="do-not-the" href="stinky.html">DNI</a>
+        <a href="two.html">about me !</a>
+        <a class="hold-up" href="holdon.html">BYI</a>
+    </div>
+
+    <div class="links">
+        <a href="https://youtube.com/@Mystically" target="_blank"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
+        <a href="https://github.com/mystically11" target="_blank"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
+        <a href="https://mystically.bsky.social" target="_blank"><i class="fa-brands fa-bluesky fa-2xl"></i></a>
+
+        <a class="discord-tooltip" id="discord-tooltip">
+            <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
+            <span class="discord-tooltip-text">@mystically</span>
+        </a>
+        <script>
+            document.getElementById('discord-tooltip').addEventListener('click', function() {
+                copyToClipboard('@mystically');
+            });
+        </script>
+
+        <a href="https://toyhou.se/mystically" target="_blank"><img id="th-icon" src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg" style="width: 35px; margin-top: -10px; margin-bottom: -8px;"></a>
+        <a href="https://matrix.to/#/@mystically:matrix.org" target="_blank"><img id="mt-icon" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Matrix_icon.svg" style="width: 35px; height: 30px; margin-top: -10px; margin-bottom: -8px;"></a>
+    </div>
+
+    <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
+    
+    
+    <div class="changelog">
+        <h2>Changelog</h2>
+        <div class="changelog-container" style="border: 4px solid forestgreen;">
+            <h3>Update 1.1 <span style="color:gray;">[06/12/24]</span></h3>
+            <ul>
+                <li>added starry backdrop</li>
+                <li>added light mode [click the moon]</li>
+                <li>revamped everything</li>
+                <li>fixed mobile layout</li>
+                <li>added the changelog (the one you're reading now)</li>
+            </ul>
+        </div>
+        <div class="changelog-container">
+            <h3>RELEASE 1.0 <span style="color:gray;">[07/06/24]</span></h3>
+            <ul>
+                <li>added... the entire page</li>
+            </ul>
+        </div>
+    </div>
+    <div class="straw">
+        <p>Is this too formal and professional for you?</p>
+        <p>Do you love chaos?</p>
+        <p>Here's a solution:</p>
+        <a href="https://mystina.straw.page" target="_blank"><p style="color: var(--text-color)">https://mystina.straw.page</p></a>
+    </div>
+
+    <div class="status-bar">
+        <p id="last-updated-text" data-last-update>last update: </p>
+        <p id="version"></p>
+        <a id="theme-switch" style="right: 5px;"><i class="fa-solid fa-moon"></i></a>
+    </div>
+
+    <script>
+        spawnStars('starCanvas', 150, 0.5);
+
+        const date = ((new Date() - new Date("2008-08-31")) / (365.25 * 24 * 60 * 60 * 1000)).toFixed(1);
+        document.getElementById("yearn").textContent = "[" + date + " years old] " + document.getElementById("yearn").textContent; 
+    </script>
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

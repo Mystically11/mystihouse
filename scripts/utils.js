@@ -26,4 +26,3 @@ function getBirthday() {
             return `i'll be ${Math.floor(oldFreak)} in ${daysUntil} days`;
     }
 }
-

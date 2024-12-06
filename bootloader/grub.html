@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>mystis world</title>
     <style>
         @font-face { font-family: VGA DOS; src: url('../fonts/VGA.ttf'); } 
@@ -70,6 +71,8 @@
             font-family: VGA DOS, sans-serif;
         }
 
+        #versionText11::after { content: var(--version); }
+
         @keyframes flashy {
             from, to {
                 color: transparent;
@@ -91,7 +94,7 @@
     </div>
     <div class="bootloader">
         <ul>
-            <li class="active" id="versionText11" grab-url="../about/index.html" data-commit-count>Mystically's Profile Page v1</li>
+            <li class="active" id="versionText11" grab-url="../about-me/index.html">Mystically's Profile Page </li>
             <li grab-url="https://www.youtube.com/watch?v=GKfr5S5Q3OY">Memory test (memtest86+)</li>
             <li grab-url="https://www.youtube.com/watch?v=3z7aiZa1qO4">Memory test (memtest86+, serial console 115200)</li>
             <br><br><br><br><br><br><br><br><br>
