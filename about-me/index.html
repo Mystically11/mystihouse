@@ -7,8 +7,8 @@
     <title>mystis world</title>
 
     <link rel="icon" href="../fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         .light #th-icon, .light #mt-icon {
@@ -16,37 +16,50 @@
         }
 
         body {
-            height: auto;
             min-height: 100vh;
-
-            background-attachment: fixed;
+            background: var(--bg-color) no-repeat center center fixed;
             background-size: cover;
-            background: var(--bg-color);
-            
+
             display: flex;
-            align-items: center;
             flex-direction: column;
             overflow-x: hidden;
-
             transition: color 0.3s;
-            gap: 10px;
-        }
-
-        @media (min-width: 769px) {
-            body {
-                justify-content: center;
-            }
+            align-items: center;
         }
 
         body:not(.light) #th-icon, #mt-icon {
             filter: invert();
         }
 
-        @media (max-width: 768px) {
-            body {
-                height: 125vh;
-                overflow-y: scroll;
+        .page-container {
+            display: grid;
+            grid-template-columns: 1fr minmax(0, 700px) 1fr;
+            grid-gap: 10px;
+            width: 100%;
+            max-width: 1500px;
+            padding: 40px;
+            box-sizing: border-box;
+            align-items: start;
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            align-items: center;
+        }
+        
+        @media (max-width: 1300px) {
+            .page-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
+
+            .center-container { order: 1; }
+            .changelog { order: 2; }
+            .straw { order: 3; }
         }
 
         #starCanvas {
@@ -58,76 +71,38 @@
             z-index: -1;
         }
 
-        .main, .links {
+        .main, .links, .straw, .changelog {
             border-radius: 10px;
             padding: 20px;
-            max-width: 600px;
-            width: 100%;
-
+            border: solid 4px var(--element-color);
             color: var(--text-color);
-            border-style: solid;
-            border-color: var(--element-color);
-
-            background-color: rgba(0, 0, 50, 0.025);
-            -webkit-backdrop-filter: blur(3px);
-            backdrop-filter: blur(3px);
-
+            background-color: rgba(0,0,50, 0.025);
             text-align: center;
             transition: color 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .main, .links { width: 90%; } 
-        }
-
-        .straw {
-            padding: 20px;
-            border-radius: 10px;
-
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            border-color: var(--element-color);
-            border-style: solid;
-
-            text-decoration: none;
-            text-align: center;
-
             -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px);
-        }
-
-        @media (min-width: 1525px) {
-            .straw {
-                left: 6%;
-                position: absolute;
-                margin: 0;
-                justify-content: center;
-            }
+            width: 100%;
+            max-width: 600px;
         }
 
         .main a {
             padding: 7.5px 20px;
             border-radius: 10px;
 
-            background-color: var(--element-color);
-            display: inline-block;
             color: var(--text-color-inverted);
-
+            background-color: var(--element-color);
             border-color: var(--element-color);
             border-style: solid;
+            display: inline-block;
 
             text-decoration: none;
             transition: transform 0.25s ease, background-color 0.5s ease;
         }
-        
+
         .main a:hover { 
             transform: scale(0.9); 
             background-color: var(--bg-color);
             color: var(--element-color);
-        }
-        
-        @media (max-width: 768px) {
-            .links { line-height: 3em; }
         }
 
         .links a img, i {
@@ -138,7 +113,7 @@
             transition: transform 0.5s ease-in-out, color 0.5s ease-in-out; 
         }
 
-        .links a:hover i, .links a img:hover {transform: scale(1.1) rotate(5deg) translateY(-8px);}
+        .links a:hover i, .links a img:hover { transform: scale(1.1) rotate(5deg) translateY(-8px); }
 
         .links a.discord-tooltip {
             position: relative;
@@ -171,25 +146,20 @@
             opacity: 1;
         }
 
+        @media (min-width: 1250px) {
+            .straw { width: 90%; }
+            .changelog { width: 95%;}
+        }
+
+        @media (max-width: 1250px) {
+            .links { line-height: 3em; }
+        }
+
         .changelog {
-            left: 72%;
-        
-            
-            border-radius: 10px;
-            border: solid var(--element-color);
-        
-            width: calc(100% - 40px);
-            max-width: 500px;
-            max-height: 30%;
-            height: auto; 
-            
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            -webkit-backdrop-filter: blur(3px);
-            backdrop-filter: blur(3px);
-            
+            width: 100%;
+            max-height: 50vh;
             overflow-y: scroll;
-            position: absolute;
+            
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -198,19 +168,6 @@
             transition: color 0.3s;
         }
 
-        @media (max-width: 1800px) {
-            .changelog {
-                top: inherit;
-                left: inherit;
-
-                position: inherit;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                flex-flow: column;
-            }
-        }
-        
         .changelog h2, h3 { text-align: center; margin: 5px 0 0 0 ;}
         
         .changelog-container {
@@ -238,6 +195,11 @@
             position: absolute;
         }
 
+        #change-cur {
+            border: 4px solid forestgreen;
+        }
+
+
         @keyframes didYouSee {
             0% { transform: translateX(-3000px); }
             100% { transform: translateX(3000px); }
@@ -255,66 +217,76 @@
         <noscript><h2 style="color: salmon; text-align: center;"> 😕 Looks like you have JavaScript disabled. Please enable it for full site functionality. </h2></noscript>
     </div>
 
-    <div class="main">
-        <img src="../assets/thumb2.png" style="border-radius: 20%;" width="128px" height="128px">
+    <div class="page-container">
+        <aside class="straw">
+            <p>Is this too formal and professional for you?</p>
+            <p>Do you love chaos?</p>
+            <p>Here's a solution:</p>
+            <a href="https://mystina.straw.page" target="_blank"><p style="color: var(--text-color)">https://mystina.straw.page</p></a>
+        </aside>
+        <div class="center-container">
+            <main class="main">
+                <img src="../assets/thumb2.png" style="border-radius: 20%;" width="128px" height="128px">
 
-        <h1 id="hitxt";">hello! 👋</h1>
+                <h1 id="hitxt";">hello! 👋</h1>
+                <h2>you can call me <span style="color: var(--name-color)">Mysti <span style="color: var(--element-color)">or</span> Martina</span></h2>
+                <p id="yearn">she/her</p>
+                <p>yes i like coding, how could you tell?</p>
 
-        <h2>you can call me <span style="color: var(--name-color)">Mysti <span style="color: var(--element-color)">or</span> Martina</span></h2>
-        <p id="yearn">she/her</p>
-        <p>yes i like coding, how could you tell?</p>
+                <a class="do-not-the" href="stinky.html">DNI</a>
+                <a href="two.html">about me !</a>
+                <a class="hold-up" href="holdon.html">BYI</a>
+            </main>
 
-        <a class="do-not-the" href="stinky.html">DNI</a>
-        <a href="two.html">about me !</a>
-        <a class="hold-up" href="holdon.html">BYI</a>
-    </div>
+            <section class="links">
+                <a href="https://youtube.com/@Mystically" target="_blank"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
+                <a href="https://github.com/mystically11" target="_blank"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
+                <a href="https://mystically.bsky.social" target="_blank"><i class="fa-brands fa-bluesky fa-2xl"></i></a>
 
-    <div class="links">
-        <a href="https://youtube.com/@Mystically" target="_blank"><i class="fa-brands fa-youtube fa-2xl" alt="youtube"></i></a>
-        <a href="https://github.com/mystically11" target="_blank"><i class="fa-brands fa-github fa-2xl" alt="github"></i></a>
-        <a href="https://mystically.bsky.social" target="_blank"><i class="fa-brands fa-bluesky fa-2xl"></i></a>
+                <a class="discord-tooltip" id="discord-tooltip">
+                    <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
+                    <span class="discord-tooltip-text">@mystically</span>
+                </a>
+                <script>
+                    document.getElementById('discord-tooltip').addEventListener('click', function() {
+                        copyToClipboard('@mystically');
+                    });
+                </script>
 
-        <a class="discord-tooltip" id="discord-tooltip">
-            <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
-            <span class="discord-tooltip-text">@mystically</span>
-        </a>
-        <script>
-            document.getElementById('discord-tooltip').addEventListener('click', function() {
-                copyToClipboard('@mystically');
-            });
-        </script>
-
-        <a href="https://toyhou.se/mystically" target="_blank"><img id="th-icon" src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg" style="width: 35px; margin-top: -10px; margin-bottom: -8px;"></a>
-        <a href="https://matrix.to/#/@mystically:matrix.org" target="_blank"><img id="mt-icon" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Matrix_icon.svg" style="width: 35px; height: 30px; margin-top: -10px; margin-bottom: -8px;"></a>
-    </div>
-
-    <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
-    
-    
-    <div class="changelog">
-        <h2>Changelog</h2>
-        <div class="changelog-container" style="border: 4px solid forestgreen;">
-            <h3>Update 1.1 <span style="color:gray;">[06/12/24]</span></h3>
-            <ul>
-                <li>added starry backdrop</li>
-                <li>added light mode [click the moon]</li>
-                <li>revamped everything</li>
-                <li>fixed mobile layout</li>
-                <li>added the changelog (the one you're reading now)</li>
-            </ul>
+                <a href="https://toyhou.se/mystically" target="_blank"><img id="th-icon" src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg" style="width: 35px; margin-top: -10px; margin-bottom: -8px;"></a>
+                <a href="https://matrix.to/#/@mystically:matrix.org" target="_blank"><img id="mt-icon" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Matrix_icon.svg" style="width: 35px; height: 30px; margin-top: -10px; margin-bottom: -8px;"></a>
+            </section>
         </div>
-        <div class="changelog-container">
-            <h3>RELEASE 1.0 <span style="color:gray;">[07/06/24]</span></h3>
-            <ul>
-                <li>added... the entire page</li>
-            </ul>
-        </div>
-    </div>
-    <div class="straw">
-        <p>Is this too formal and professional for you?</p>
-        <p>Do you love chaos?</p>
-        <p>Here's a solution:</p>
-        <a href="https://mystina.straw.page" target="_blank"><p style="color: var(--text-color)">https://mystina.straw.page</p></a>
+
+        <img id="mario" src="../didyouseeit.gif" alt="mario?" width="60px">
+         
+        <aside class="changelog">
+            <h2>Changelog</h2>
+            <div class="changelog-container" id="change-cur">
+                <h3>Patch 1.1.1 <span style="color:gray;">[18/12/24]</span></h3>
+                <ul>
+                    <li>fixed the horrible old code</li>
+                    <li>fixed grid placements</li>
+                    <li>updated social media embed</li>
+                </ul>
+            </div>
+            <div class="changelog-container">
+                <h3>Update 1.1 <span style="color:gray;">[06/12/24]</span></h3>
+                <ul>
+                    <li>added starry backdrop</li>
+                    <li>added light mode [click the moon]</li>
+                    <li>revamped everything</li>
+                    <li>fixed mobile layout</li>
+                    <li>added the changelog (the one you're reading now)</li>
+                </ul>
+            </div>
+            <div class="changelog-container">
+                <h3>RELEASE 1.0 <span style="color:gray;">[07/06/24]</span></h3>
+                <ul>
+                    <li>added... the entire page</li>
+                </ul>
+            </div>
+        </aside>
     </div>
 
     <div class="status-bar">
