@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 
-    <title>mystis world</title>
-
+    <title>martina world</title>
     <link rel="icon" href="../fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -14,21 +13,24 @@
         .light #th-icon, .light #mt-icon {
             filter: none;
         }
-
+        
         body {
-            min-height: 100vh;
-            background: var(--bg-color) no-repeat center center fixed;
-            background-size: cover;
-
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            overflow: hidden;
             transition: color 0.3s;
             align-items: center;
         }
 
-        body:not(.light) #th-icon, #mt-icon {
+        body:not(.light) #th-icon, body:not(.light) #mt-icon {
             filter: invert();
+        }
+
+        .content-wrapper {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
         }
 
         .page-container {
@@ -49,7 +51,10 @@
             align-items: center;
         }
         
-        @media (max-width: 1300px) {
+        @media (max-width: 1250px) {
+            body {
+                overflow-y: scroll;
+            }
             .page-container {
                 display: flex;
                 flex-direction: column;
@@ -57,9 +62,14 @@
                 justify-content: center;
             }
 
+            .center-container {
+                width: 100%;
+            }
+
             .center-container { order: 1; }
             .changelog { order: 2; }
             .straw { order: 3; }
+            .ohmygod { order: 4; }
         }
 
         #starCanvas {
@@ -81,8 +91,8 @@
             transition: color 0.3s;
             -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px);
-            width: 100%;
             max-width: 600px;
+            width: 100%;
         }
 
         .main a {
@@ -105,7 +115,7 @@
             color: var(--element-color);
         }
 
-        .links a img, i {
+        .links a img, .links i {
             color: var(--element-color);
             padding-left: 0.5em; 
             padding-right: 0.5em;
@@ -113,7 +123,9 @@
             transition: transform 0.5s ease-in-out, color 0.5s ease-in-out; 
         }
 
-        .links a:hover i, .links a img:hover { transform: scale(1.1) rotate(5deg) translateY(-8px); }
+        .links a:hover i, .links a img:hover { 
+            transform: scale(1.1) rotate(5deg) translateY(-8px); 
+        }
 
         .links a.discord-tooltip {
             position: relative;
@@ -148,10 +160,11 @@
 
         @media (min-width: 1250px) {
             .straw { width: 90%; }
-            .changelog { width: 95%;}
+            .changelog { width: 95%; }
         }
 
         @media (max-width: 1250px) {
+            .main, .links, .straw, .changelog { max-width: 100%; }
             .links { line-height: 3em; }
         }
 
@@ -163,17 +176,31 @@
             display: flex;
             flex-flow: column;
             align-items: center;
-            gap: 10px;
 
+            gap: 10px;
             transition: color 0.3s;
         }
 
-        .changelog h2, h3 { text-align: center; margin: 5px 0 0 0 ;}
+        .changelog h2, .changelog h3 { 
+            text-align: center; 
+            margin: 5px 0 0 0 ;
+        }
+
+        .changelog-filter {
+            color: var(--element-color);
+            background-color: var(--element-color-inverted);
+            border: 2px solid var(--element-color);
+            border-radius: 10px;
+            padding: 5px;
+
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
         
         .changelog-container {
             width: 75%;
             position: relative;
-
             text-align: center;
             
             background-color: var(--element-color-inverted);
@@ -181,12 +208,28 @@
             border-radius: 10px;
             border: 2px solid var(--element-color);
 
-            ul {
-                display: inline-block;
-                text-align: center;
-                list-style-position: inside;
-                padding-left: 0;  
-            }
+            max-height: 50vh;
+            transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+        }
+
+        .changelog-container ul {
+            display: inline-block;
+            text-align: center;
+            list-style-position: inside;
+            padding-left: 0;  
+        }
+
+        .changelog-container.hidden {
+            opacity: 0; 
+            visibility: hidden;
+            pointer-events: none;
+            max-height: 0;
+        }
+
+        .ohmygod {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         #mario {
@@ -195,16 +238,18 @@
             position: absolute;
         }
 
-        #change-cur {
-            border: 4px solid forestgreen;
+        #change-cur { 
+            border: 4px solid forestgreen; 
         }
 
+        #change-next { 
+            border: 4px solid royalblue; 
+        }
 
         @keyframes didYouSee {
             0% { transform: translateX(-3000px); }
             100% { transform: translateX(3000px); }
-        }
-            
+        }     
     </style>
     <script src="../scripts/scrapeGithubData.js"></script>
     <script src="../scripts/utils.js"></script>
@@ -212,11 +257,9 @@
 </head>
 <body>
     <canvas id="starCanvas"></canvas>
-
     <div>
-        <noscript><h2 style="color: salmon; text-align: center;"> 😕 Looks like you have JavaScript disabled. Please enable it for full site functionality. </h2></noscript>
+        <noscript><h2 style="color: salmon; text-align: center;"> Looks like you have JavaScript disabled 💔 Please enable it if you want the site to work. </h2></noscript>
     </div>
-
     <div class="page-container">
         <aside class="straw">
             <p>Is this too formal and professional for you?</p>
@@ -247,14 +290,15 @@
                     <i class="fa-brands fa-discord fa-2xl" alt="discord"></i>
                     <span class="discord-tooltip-text">@mystically</span>
                 </a>
+
                 <script>
                     document.getElementById('discord-tooltip').addEventListener('click', function() {
                         copyToClipboard('@mystically');
                     });
                 </script>
 
-                <a href="https://toyhou.se/mystically" target="_blank"><img id="th-icon" src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg" style="width: 35px; margin-top: -10px; margin-bottom: -8px;"></a>
-                <a href="https://matrix.to/#/@mystically:matrix.org" target="_blank"><img id="mt-icon" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Matrix_icon.svg" style="width: 35px; height: 30px; margin-top: -10px; margin-bottom: -8px;"></a>
+                <a href="https://toyhou.se/mystically" target="_blank"><img id="th-icon" src="https://static.wikia.nocookie.net/skeletonhearts/images/c/cb/Toyhouse.svg" style="width: 35px; height: auto; margin:-10px 0 -8px 0;"></a>
+                <a href="https://matrix.to/#/@mystically:matrix.org" target="_blank"><img id="mt-icon" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Matrix_icon.svg" style="width: 30px; height: auto; margin-top: -10px; margin-bottom: -8px;"></a> 
             </section>
         </div>
 
@@ -262,15 +306,34 @@
          
         <aside class="changelog">
             <h2>Changelog</h2>
-            <div class="changelog-container" id="change-cur">
+            <div class="changelog-filter">
+                <label>
+                  <input type="checkbox" data-filter="update" checked>
+                  Updates
+                </label>
+                <label>
+                  <input type="checkbox" data-filter="patch" checked>
+                  Patches
+                </label>
+            </div>
+            <h3 class="changelog-empty" style="display: none; color: gray;">nothing to show 💔</h3>
+            <div class="changelog-container" id="change-cur" data-type="update">
+                <h3>Update 1.2 <span style="color:gray;">[19/12/24]</span></h3>
+                <ul>
+                    <li>added changelog filtering</li>
+                    <li>actually fixed the bad code (coding increased to 0)</li>
+                    <li>small tweaks everywhere</li>
+                </ul>
+            </div>
+            <div class="changelog-container" data-type="patch">
                 <h3>Patch 1.1.1 <span style="color:gray;">[18/12/24]</span></h3>
                 <ul>
-                    <li>fixed the horrible old code</li>
+                    <li>"fixed" the horrible old code</li>
                     <li>fixed grid placements</li>
                     <li>updated social media embed</li>
                 </ul>
             </div>
-            <div class="changelog-container">
+            <div class="changelog-container" data-type="update">
                 <h3>Update 1.1 <span style="color:gray;">[06/12/24]</span></h3>
                 <ul>
                     <li>added starry backdrop</li>
@@ -280,19 +343,22 @@
                     <li>added the changelog (the one you're reading now)</li>
                 </ul>
             </div>
-            <div class="changelog-container">
+            <div class="changelog-container" data-type="update">
                 <h3>RELEASE 1.0 <span style="color:gray;">[07/06/24]</span></h3>
                 <ul>
                     <li>added... the entire page</li>
                 </ul>
             </div>
         </aside>
+        <section class="ohmygod">
+            <aside><img src="../assets/five.png" style="width: 80%;"></aside>
+            <img src="https://media1.giphy.com/media/qAaCUm3ZVsiRi/giphy.gif?cid=446e6413s6f2mu5g768faclce9cifbfd7m6lbz8yaadr2vyx&rid=giphy.gif&ct=s">
+        </section>
     </div>
-
     <div class="status-bar">
         <p id="last-updated-text" data-last-update>last update: </p>
         <p id="version"></p>
-        <a id="theme-switch" style="right: 5px;"><i class="fa-solid fa-moon"></i></a>
+        <a id="theme-switch"><i class="fa-solid fa-moon"></i></a>
     </div>
 
     <script>
@@ -300,6 +366,37 @@
 
         const date = ((new Date() - new Date("2008-08-31")) / (365.25 * 24 * 60 * 60 * 1000)).toFixed(1);
         document.getElementById("yearn").textContent = "[" + date + " years old] " + document.getElementById("yearn").textContent; 
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.querySelectorAll('.changelog-filter input[type="checkbox"]');
+            const containers = document.querySelectorAll('.changelog-container');
+            const bruh = document.querySelector('.changelog-empty');
+
+            function apply_filter() {
+                const active = Array.from(checkbox)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.getAttribute('data-filter'));
+                
+                containers.forEach(container => {
+                const type = container.getAttribute('data-type');
+                if (active.includes(type)) {
+                    container.style.display = 'block';
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                    setTimeout(() => container.style.display = 'none', 300);
+                }
+                });
+
+                const notEmpty = Array.from(containers).some(container => !container.classList.contains('hidden'));
+                bruh.style.display = notEmpty ? 'none' : 'block';
+            }
+            apply_filter();
+
+            checkbox.forEach(checkbox => {
+                checkbox.addEventListener('change', apply_filter);
+            });
+        });
     </script>
     <script src="../scripts/theme.js"></script>
 </body>

@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 
-    <title>mystis world</title>
+    <title>martina world 2</title>
     <link rel="icon" href="../fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
 
     <style>
         body {
-            height: auto;
-
-            background-size: cover;
-            background: var(--bg-color);
-
             display: flex;
-            align-items: center;
             flex-direction: column;
             overflow-x: hidden;
+            transition: color 0.3s;
+            align-items: center;
             gap: 10px;
         }
 
@@ -27,7 +23,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 135%;
+            height: auto;
             z-index: -1;
         }
 
@@ -45,10 +41,10 @@
 
             -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px);
+            
+            transition: color 0.3s;
 
             p { font-weight: 600; }
-
-            transition: color 0.3s;
         }
 
         .main button {
@@ -109,8 +105,7 @@
             transform: scale(0.95) rotate(-5deg) skewY(10deg);
         }
 
-
-        h1, p {
+        .main .martina h1, .main .martina p {
             text-align: center; 
             color: var(--element-color);
         }
@@ -119,6 +114,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
+            margin-top: 5px;
             transition: color 0.3s;
         }
 
@@ -137,7 +133,9 @@
             object-fit: contain;
         }
 
-        .sona-container:hover { transform: scale(0.95); }
+        .sona-container:hover { 
+            transform: scale(0.95); 
+        }
 
         .sona-credit, .sona-ref {
             padding: 5px 10px;
@@ -151,12 +149,23 @@
             color: var(--element-color);
             
             transition: color 0.3s;
-
-            a { color: var(--element-color); text-decoration: none;}
+            
         }
 
-        .sona-credit { top: 10px; left: 10px; }
-        .sona-ref { bottom: 10px; right: 10px; }
+        .sona-credit a, .sona-ref a {
+            color: var(--element-color); 
+            text-decoration: none;
+        }
+
+        .sona-credit { 
+            top: 10px;
+            left: 10px; 
+        }
+
+        .sona-ref { 
+            bottom: 10px; 
+            right: 10px; 
+        }
 
         #th-button { 
             border-radius: 5px;
@@ -164,31 +173,36 @@
 
             color: var(--element-color-inverted);
             text-decoration: none;
-            background-color: rgb(103, 103, 223);
-            border: solid rgb(103, 103, 223);
+            background-color: var(--element-color);
+            border: solid var(--element-color);
 
             display: inline-block;
             transition: background-color 0.5s ease, color 0.5s ease, transform 0.25s ease;
         }
 
-        #th-button:hover { transform: scale(0.9); background-color: var(--element-color-inverted); color: var(--element-color);}
-
-
-        #theme-switch { right: 17px; }
+        #th-button:hover { 
+            transform: scale(0.9); 
+            background-color: var(--element-color-inverted); 
+            color: var(--element-color);
+        }
 
         @media (min-width: 769px) { 
-            .main, .martina { width: 100%; }
+            .main, .martina { 
+                width: 100%; 
+            }
         }
         @media (max-width: 768px) {
-            .main, .martina { width: 90%; } 
+            .main, .martina { 
+                width: 85%; 
+            } 
         }
 
 
     </style>
+    <script src="../scripts/scrapeGithubData.js"></script>
     <script src="../scripts/utils.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            
             if (document.getElementById('birthday-text').innerHTML.includes("get-rt-value")) {
                 var result = getBirthday();
                 document.getElementById('birthday-text').innerHTML = document.getElementById('birthday-text').innerHTML.replace("get-rt-value", result);
@@ -202,83 +216,84 @@
     <script>
         spawnStars('starCanvas', 150, 0.5);
     </script>
+    <div>
+        <noscript><h2 style="color: salmon; text-align: center;"> Looks like you have JavaScript disabled 💔 Please enable it if you want the site to work. </h2></noscript>
+    </div>
     <div class="main">
         <h1>About Me</h1>
         <h3 id="birthday-text">my birthday is on the 31st of august (get-rt-value)</h3>
         <p>i can code in <a href="https://haxe.org/" target="_blank" id="code-button"><button>Haxe</button></a> / <a href="https://godotengine.org/" target="_blank" id="code-button"><button>Godot</button></a>
             / <a href="https://kotlinlang.org/" target="_blank" id="code-button"><button>Kotlin</button></a></p>
-        <p>sometimes, i make music</p>
-        <p>↓ i can speak these languages: ↓</p>
-        <div class="main-lang">
-            <div class="container">
-                <a href="https://en.wikipedia.org/wiki/Czech_language" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" alt="czech">
-                    <div class="text">native</div>
-                </a>    
-            </div>
-            <div class="container">
-                <a href="https://simple.wikipedia.org/wiki/Slovak_language" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Slovakia.svg/640px-Flag_of_Slovakia.svg.png" alt="slovak">
-                    <div class="text">native</div>
-                </a>
-            </div>
-            <div class="container">
-                <a href="https://en.wikipedia.org/wiki/English_language" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" alt="english">
-                    <div class="text">fluently</div>
-                </a>
-            </div>
-            <div class="container">
-                <a href="https://en.wikipedia.org/wiki/Swedish_language" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Flag_of_Poland.svg/640px-Flag_of_Poland.svg.png" alt="polish">
-                    <div class="text">a little</div>
-                </a>
-            </div>
-            <div class="container">
-                <a href="https://en.wikipedia.org/wiki/Swedish_language" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg" alt="swedish">
-                    <div class="text">very little</div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="martina">
-        <h2 style=" line-height: 1;">this is <span style="color: var(--name-color)">Martina</span>, my sona and also online identity</h2>
-        <h3>you're free to draw her, if you're gonna post it somewhere make sure to tag me</h3>
-        <h2 style="color: #FFF700; background-color: black; border-radius: 5px;">NO NSFW i hope you have enough braincells to respect this as I Am A Minor</h2>
-        <p>for more examples, check out my <a href="https://toyhou.se/mystically" target="_blank" id="th-button">toyhouse</a></p>
-
-        <div class="sona-grid">
-            <div class="sona-container">
-                <a href="https://toyhou.se/25474023.martina#76726765" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/76726765_3Pl797nGvAXNEuP.png" alt="martina-1"></a>
-                <div class="sona-credit"><a href="https://youtube.com/@syberyen" target=”_blank”>@syberyen</a></div>
-            </div>
-            <div class="sona-container">
-                <a href="https://toyhou.se/25474023.martina#86037681" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/86037681_Y22i5HoN8DrlccY.png" alt="martina-1"></a>
-                <div class="sona-credit"><a href="https://x.com/trickerynumber2" target=”_blank”>@chirpy</a></div>
-                <div class="sona-ref"><a href="https://x.com/trickerynumber2/status/1811130083895300403/photo/1" target=”_blank”>full thing</a></div>
+            <p>sometimes, i make music</p>
+            <p>↓ i can speak these languages: ↓</p>
+            <div class="main-lang">
+                <div class="container">
+                    <a href="https://en.wikipedia.org/wiki/Czech_language" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" alt="czech">
+                        <div class="text">native</div>
+                    </a>    
+                </div>
+                <div class="container">
+                    <a href="https://simple.wikipedia.org/wiki/Slovak_language" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Slovakia.svg/640px-Flag_of_Slovakia.svg.png" alt="slovak">
+                        <div class="text">native</div>
+                    </a>
+                </div>
+                <div class="container">
+                    <a href="https://en.wikipedia.org/wiki/English_language" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" alt="english">
+                        <div class="text">fluently</div>
+                    </a>
+                </div>
+                <div class="container">
+                    <a href="https://en.wikipedia.org/wiki/Swedish_language" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Flag_of_Poland.svg/640px-Flag_of_Poland.svg.png" alt="polish">
+                        <div class="text">a little</div>
+                    </a>
+                </div>
+                <div class="container">
+                    <a href="https://en.wikipedia.org/wiki/Swedish_language" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg" alt="swedish">
+                        <div class="text">very little</div>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="sona-grid">
-            <div class="sona-container">
-                <a href="https://toyhou.se/25474023.martina#86042536" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/86042536_Aqy0PBIyHPemMBy.png" alt="martina-1"></a>
-                <div class="sona-credit"><a href="https://toyhou.se/unixversal" target=”_blank”>@unixversal</a></div>
+        <div class="martina">
+            <h2 style=" line-height: 1;">this is <span style="color: var(--name-color)">Martina</span>, my sona and also online identity</h2>
+            <h3>you're free to draw her, if you're gonna post it somewhere make sure to tag me</h3>
+            <h2 style="color: #FFF700; background-color: black; border-radius: 5px;">NO NSFW i hope you have enough braincells to respect this as I Am A Minor</h2>
+            <p>for more examples, check out my <a href="https://toyhou.se/mystically" target="_blank" id="th-button">toyhouse</a></p>
+            
+            <div class="sona-grid">
+                <div class="sona-container">
+                    <a href="https://toyhou.se/25474023.martina#76726765" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/76726765_3Pl797nGvAXNEuP.png" alt="martina-1"></a>
+                    <div class="sona-credit"><a href="https://youtube.com/@syberyen" target=”_blank”>@syberyen</a></div>
+                </div>
+                <div class="sona-container">
+                    <a href="https://toyhou.se/25474023.martina#86078392" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/thumbnails/86078392_fqZ_25474023.jpg" alt="martina-1"></a>
+                    <div class="sona-credit"><a href="https://youtube.com/@syberyen" target=”_blank”>@syberyen</a></div>
+                </div>
             </div>
-            <div class="sona-container" style="margin-top: 20px">
-                <a href="https://toyhou.se/25474023.martina#86078392" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/thumbnails/86078392_fqZ_25474023.jpg" alt="martina-1"></a>
-                <div class="sona-credit"><a href="https://youtube.com/@syberyen" target=”_blank”>@syberyen</a></div>
+            <div class="sona-grid">
+                <div class="sona-container">
+                    <a href="https://toyhou.se/25474023.martina#86042536" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/86042536_Aqy0PBIyHPemMBy.png" alt="martina-1"></a>
+                    <div class="sona-credit"><a href="https://toyhou.se/unixversal" target=”_blank”>@unixversal</a></div>
+                </div>
+                <div class="sona-container">
+                    <a href="https://toyhou.se/25474023.martina#92563137" target=”_blank”><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/92563137_o1lL2Q4dpJ30gmN.png" alt="martina-1"></a>
+                    <div class="sona-credit"><a href="https://x.com/trickerynumber2" target=”_blank”>@chiru</a></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-        <a id="back" href="index.html">Return to main page</a>
-    </div>
-    <div><br></div>
-    <div class="status-bar">
-        <p id="last-updated-text" data-last-update>last update: </p>
-        <p id="version"></p>
-        <a id="theme-switch"><i class="fa-solid fa-moon"></i></a>
-    </div>
-    <script src="../scripts/theme.js"></script>
-</body>
-</html>
+        <div>
+            <a id="back" href="index.html">Return to main page</a>
+        </div>
+        <div class="status-bar">
+            <p id="last-updated-text" data-last-update>last update: </p>
+            <p id="version"></p>
+            <a id="theme-switch"><i class="fa-solid fa-moon"></i></a>
+        </div>
+        <script src="../scripts/theme.js"></script>
+    </body>
+    </html>

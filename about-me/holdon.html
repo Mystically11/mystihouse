@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <title>mystis world: what you should know before talking to me</title>
+    <title>martina world: hold on</title>
     <link rel="icon" href="../fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
     
@@ -18,19 +18,13 @@
             --color-y: black;
         }
         body {
-            min-height: 100vh;
-            height: auto;
-
-            background-attachment: fixed;
-            background-size: cover;
-            background: var(--bg-color);
-
             display: flex;
             align-items: center;
             flex-direction: column;
 
             gap: 10px;
         }
+
         .scanline {
             position: fixed;
             top: 0;
@@ -43,11 +37,6 @@
             z-index: -1;
         }
 
-        @media (max-width: 768px) {
-            .header { margin-top: 20px; }
-            .status-bar { top: -1.5%; }
-        }
-        
         .list {
             border-radius: 10px;
             max-width: 500px;
@@ -57,29 +46,42 @@
             color: var(--element-color);
             border-color: var(--color-y);
             background-color: var(--element-color-inverted);
-
+            
             border-style: solid;
             text-align: left;
-
+            
             transition: color 0.3s;
         }
-        h1, p {text-align: center;}
-        button {
-            color: #43A047;
-            transform: translateY(20px);
+        
+        .header h1, .header p {
+            text-align: center;
         }
-
+        
         li, h1 {
             color: var(--element-color);
         }
-
+        
+        @media (max-width: 768px) {
+            .list { 
+                max-width: 75%; 
+            }
+            .header { 
+                margin-top: 20px; 
+            }
+            .status-bar { 
+                top: -1.5%;
+            }
+        }
+        
     </style>
+    <script src="../scripts/scrapeGithubData.js"></script>
 </head>
 <body>
     <div class="scanline"></div>
+    <div>
+        <noscript><h2 style="color: salmon; text-align: center;"> Looks like you have JavaScript disabled 💔 Please enable it if you want the site to work. </h2></noscript>
+    </div>
     <div class="header">
-        <noscript><h2 style="color: yellow; text-align: center;"> 😕 Looks like you have JavaScript disabled. Please enable it for full site functionality </h2></noscript>
-
         <h1>pointers before you talk to me:</h1>
     </div>
     <div class="list">
@@ -96,7 +98,6 @@
     <div>
         <a id="back" href="index.html">Return to main page</a>
     </div>
-    <div><br></div>
     <div class="status-bar">
         <p id="last-updated-text" data-last-update>last update: </p>
         <p id="version"></p>

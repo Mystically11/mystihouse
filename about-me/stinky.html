@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>mystis world: DNI</title>
+    <title>martina world: DNI</title>
     <link rel="icon" href="../fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
 
@@ -18,16 +18,10 @@
             --text-color-y: black;
         }
         body {
-            min-height: 100vh;
-            height: auto;
-
-            background-attachment: fixed;
-            background-size: cover;
-            background: var(--bg-color);
-
             display: flex;
             align-items: center;
             flex-direction: column;
+            overflow: hidden;
             gap: 10px;
         }
 
@@ -58,7 +52,7 @@
 
             transition: all 0.3s ease;
         }
-        h1, p {
+        .dni-header h1, .dni-header p {
             text-align: center; 
             color: var(--text-color);
             transition: all 0.3s ease;
@@ -75,15 +69,25 @@
         li { line-height: 1.8; }
 
         @media (max-width: 768px) {
-            .dni-header { margin-top: 20px; }
-            .status-bar { top: -1.5%; }
+            .body { 
+                overflow-y: scroll;
+            }
+            .dni-header { 
+                margin-top: 20px; 
+            }
+            .dni-list {
+                max-width: 70%;
+            }
         }
     </style>
+    <script src="../scripts/scrapeGithubData.js"></script>
 </head>
 <body>
     <div class="scanline"></div>
+    <div>
+        <noscript><h2 style="color: salmon; text-align: center;"> Looks like you have JavaScript disabled 💔 Please enable it if you want the site to work. </h2></noscript>
+    </div>
     <div class="dni-header">
-        <noscript><h2 style="color: salmon; text-align: center;">❌ JavaScript is disabled. Consider enabling it to avoid the site breaking. ❌</h2></noscript>
         <h1>DO NOT INTERACT LIST</h1>
         
         <p>Do not interact with me if any of the below listed conditions apply to you in any way.</p>
@@ -100,7 +104,6 @@
     <div>
         <a id="back" href="index.html">Return to main page</a>
     </div>
-    <div><br></div>
     <div class="status-bar">
         <p id="last-updated-text" data-last-update>last update: </p>
         <p id="version"></p>
