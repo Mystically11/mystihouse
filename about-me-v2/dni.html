@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>martina world: DNI</title>
+    <link rel="icon" href="../fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            gap: 10px;
+            background: #020202;
+        }
+
+        .dni-list {
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 500px;
+            line-height: 1.6;
+
+            background: linear-gradient(25deg,rgba(200, 0, 12, 1) 0%, rgba(250, 101, 61, 1) 100%);
+            color: white;
+            
+            text-align: left;
+
+            transition: all 0.3s ease;
+        }
+        .dni-header {
+            text-align: center; 
+            color: white;
+            transition: all 0.3s ease;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        a {  
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: black;
+        }
+
+        #dummy { text-decoration: underline; }
+
+
+        li { line-height: 1.8; }
+
+        @media (max-width: 768px) {
+            body { 
+                overflow-y: auto;
+                padding: 1rem;
+            }
+            .dni-list {
+                max-width: 90%;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div>
+        <noscript><h2 style="color: salmon; text-align: center;"> Looks like you have JavaScript disabled 💔 Please enable it if you want the site to work. </h2></noscript>
+    </div>
+    <div class="dni-header">
+        <h1>DO NOT INTERACT LIST</h1>
+        
+        <p>Do not interact with me if any of the below listed conditions apply to you in any way.</p>
+    </div>
+    <div class="dni-list">
+        <ul>
+            <li>basic dni criteria <a id="dummy" target="_blank" href="https://www.google.com/search?q=basic+dni+criteria">what's that?</a></li>
+            <li>you're 7+ years older than me and you're a stranger to me</li>
+            <li>you start beef with people or spread misinformation for fun</li>
+            <li>i've blocked you before and i've made it clear that i want nothing to do with you</li>
+            <li>you're involved in any kind of fetish or any illegal activities</li>
+        </ul>
+    </div>
+    <div>
+        <a id="back" href="index.html">return</a>
+    </div>
+</body>
+</html>
+
