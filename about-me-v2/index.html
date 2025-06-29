@@ -26,6 +26,15 @@
             overflow-x: hidden;
         }
 
+        body::after{
+            position: absolute; 
+            width: 0; 
+            height: 0; 
+            overflow: hidden; 
+            z-index: -1;
+            content: url('https://f2.toyhou.se/file/f2-toyhou-se/images/99100255_CyiHpU8BPQHyv4Z.png');
+        }
+
         .container {
             display: flex;
             width: 100%;
@@ -422,20 +431,20 @@
                 <p class="desc">i'm Martina <span style="opacity: 0.3;">[Mystically]</span></p>
                 <p class="desc"><span style="color: rgb(91, 207, 250);">she</span>/<span style="color: rgb(245, 171, 185);">her</span>/they - 16y <span style="opacity: 0.3;">[31 August]</span></p>
                 <hr color="#212121" size="1px">
-                <p class="desc" style="font-size: 1.2rem;">"passionate" coder <span style="opacity: 0.3;">in Godot, Kotlin, C#</span></p>
+                <p class="desc" style="font-size: 1.2rem;">"passionate" coder <span style="opacity: 0.3;">in Godot, Kotlin, C#, Python</span></p>
                 <p class="desc" style="font-size: 1.2rem;">occasionally i also compose music</p>
                 <p class="desc" style="font-size: 1.2rem;">
                     i can speak                     
                         <a href="https://en.wikipedia.org/wiki/Czech_language" target="_blank">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" width="36px" style="border-radius: 6px; vertical-align: middle;" alt="CZ">
+                            <img rel="preload" src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" width="36px" style="border-radius: 6px; vertical-align: middle;" alt="CZ">
                         </a>    
                         <a href="https://en.wikipedia.org/wiki/Slovak_language" target="_blank">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Slovakia.svg/640px-Flag_of_Slovakia.svg.png" width="36px" style="border-radius: 6px; vertical-align: middle;" alt="SK">
+                            <img rel="preload" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Slovakia.svg/640px-Flag_of_Slovakia.svg.png" width="36px" style="border-radius: 6px; vertical-align: middle;" alt="SK">
                         </a>
                         <a href="https://en.wikipedia.org/wiki/English_language" target="_blank">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" width="36px" style="border-radius: 6px; vertical-align: middle;" alt="EN">
+                            <img rel="preload" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" width="36px" style="border-radius: 6px; vertical-align: middle;" alt="EN">
                         </a>  
-                    fluently. <span style="opacity: 0.3;">i can also speak swedish but i learned through duolingo Don't entrust me</span></p>
+                    fluently.</p><br>
 
                 <div class="links">
                     <a href="https://youtube.com/Mystically" target="_blank">
@@ -482,19 +491,13 @@
                 
                 <div class="buttons">
                     <div class="btn-floaty">
-                        <a href="dni.html">
-                            <button class="btn">dni</button>
-                        </a>
+                        <button class="btn" onclick="location.href='dni.html'">dni</button>
                     </div>
                     <div class="btn-floaty">
-                        <a href="byi.html">
-                            <button class="btn" href="">byi</button>                        
-                        </a>
+                        <button class="btn" onclick="location.href='byi.html'">byi</button>                        
                     </div>
                     <div class="btn-floaty">
-                        <a href="characters.html">
-                            <button class="btn">characters</button>
-                        </a>    
+                        <button class="btn" onclick="location.href='characters.html'">characters</button>   
                     </div>
                     <div class="btn-floaty">
                         <button class="btn" id="toggleChangelog">changelog</button>  
@@ -519,7 +522,13 @@
             </div>
             <h3 class="changelog-empty" style="display: none; color: gray;">nothing to show 💔</h3>
             <div class="changelog-content">
-                <div class="changelog-container" id="change-cur" data-type="update" style="border: 4px solid #4CAF50;">
+                <div class="changelog-container" id="change-cur" data-type="patch" style="border: 4px solid #4CAF50;">
+                    <h3>Patch 2.0.1 <span style="opacity: 0.3;">[29/06/25]</span></h3>
+                    <ul>
+                        <li>add preloading of images</li>
+                    </ul>
+                </div>
+                <div class="changelog-container" id="change-cur" data-type="update">
                     <h3>Update 2.0 <span style="opacity: 0.3;">[21/04/25]</span></h3>
                     <ul>
                         <li>new ui yay!</li>
