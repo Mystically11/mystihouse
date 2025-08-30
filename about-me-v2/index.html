@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="image" href="https://f2.toyhou.se/file/f2-toyhou-se/images/99100255_CyiHpU8BPQHyv4Z.png">
     <style>
         * {
             margin: 0;
@@ -224,7 +226,6 @@
             transform: translateX(100%);
             pointer-events: none;
             animation: slide-in 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-
         }
 
         .changelog {
@@ -246,7 +247,7 @@
             background-color: rgba(0, 0, 0, 0.9);
             padding: 20px;
             border-radius: 15px;
-            border: 2px white solid;
+            border: 6px white solid;
 
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -261,6 +262,27 @@
             padding-right: 5px;
         }
 
+        .changelog-content {
+            scrollbar-width: thin;
+            scrollbar-color: #03A9F4 #111122;
+        }
+
+        .changelog-content::-webkit-scrollbar {
+            width: 8px;
+            background: #111122;
+            border-radius: 8px;
+        }
+
+        .changelog-content::-webkit-scrollbar-thumb {
+            background: #03A9F4;
+            border-radius: 8px;
+            border: 2px solid #111122;
+        }
+
+        .changelog-content::-webkit-scrollbar-thumb:hover {
+            background: #F06292;
+        }
+
         .changelog.hidden {
             opacity: 0;
             visibility: hidden;
@@ -269,7 +291,8 @@
 
         .changelog-container {
             position: relative;
-            background-color: black;
+            background-color: white;
+            color: black;
             border-radius: 10px;
             border: 2px solid white;
             width: 80%;
@@ -331,6 +354,11 @@
             cursor: crosshair;
         }
 
+        .changelog-current {
+            border: 4px solid #8A784E;
+            background-color: #A3DC9A;
+        }
+
         .version {
             position: fixed;
             top: 5px;
@@ -357,7 +385,7 @@
             }
             
             .left-section {
-                background-color: rgba(0, 0, 16, 0.9);
+                background-color: rgba(0, 0, 16, 0.8);
                 padding: 2rem;
                 justify-content: center;
                 align-items: center;
@@ -372,7 +400,7 @@
                 position: absolute;
                 inset: 0;
                 z-index: -1;
-                opacity: 0.7;
+                opacity: 1;
                 background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/99100255_CyiHpU8BPQHyv4Z.png');
                 background-position: center;
                 background-size: 18rem;
@@ -383,6 +411,10 @@
                 align-items: center;
                 text-align: center;
                 gap: 0.7rem;
+            }
+
+            .changelog {
+                width: 95%;
             }
             
             .right-section, .right-section::before {
@@ -506,6 +538,7 @@
             </div>
         </div>
         <div class="right-section"></div>
+
         
         <div class="changelog hidden">
             <button class="close-changelog"><i class="fa-solid fa-xmark"></i></button>
@@ -522,20 +555,27 @@
             </div>
             <h3 class="changelog-empty" style="display: none; color: gray;">nothing to show 💔</h3>
             <div class="changelog-content">
-                <div class="changelog-container" id="change-cur" data-type="patch" style="border: 4px solid #4CAF50;">
+                <div class="changelog-container changelog-current" data-type="patch">
+                    <h3>Patch 2.0.4 <span style="opacity: 0.3;">[30/08/25]</span></h3>
+                    <ul>
+                        <li>add  Somewhat actually functioning preloading of images</li>
+                        <li>small fixes</li>
+                    </ul>
+                </div>
+                <div class="changelog-container" data-type="patch">
                     <h3>Patch 2.0.3 <span style="opacity: 0.3;">[29/06/25]</span></h3>
                     <ul>
                         <li>add preloading of images</li>
                     </ul>
                 </div>
-                <div class="changelog-container" id="change-cur" data-type="update">
+                <div class="changelog-container" data-type="update">
                     <h3>Update 2.0 <span style="opacity: 0.3;">[21/04/25]</span></h3>
                     <ul>
                         <li>new ui yay!</li>
                         <li style="font-family: Eater; font-size: 10px; color: red;">Removed Herobrine</li>
                     </ul>
                 </div>
-                <div class="changelog-container" id="change-cur" data-type="update">
+                <div class="changelog-container" data-type="update">
                     <h3>Update 1.2 <span style="opacity: 0.3;">[19/12/24]</span></h3>
                     <ul>
                         <li>added changelog filtering</li>
