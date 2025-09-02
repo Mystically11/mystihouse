@@ -28,15 +28,6 @@
             overflow-x: hidden;
         }
 
-        body::after{
-            position: absolute; 
-            width: 0; 
-            height: 0; 
-            overflow: hidden; 
-            z-index: -1;
-            content: url('https://f2.toyhou.se/file/f2-toyhou-se/images/99100255_CyiHpU8BPQHyv4Z.png');
-        }
-
         .container {
             display: flex;
             width: 100%;
@@ -378,6 +369,13 @@
             }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            * { 
+                animation: none !important; 
+                transition: none !important; 
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -452,18 +450,19 @@
             }
         }
     </style>
-    <script src="../scripts/scrapeGithubData.js"></script>
+    <script src="../scripts/scrapeGithubData.js" defer></script>
+    <script src="../scripts/utils.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <p class="version" data-last-update>v2.0.4 - last update: </p>
+        <p class="version" data-last-update>v2.0.5 - last update: </p>
         <div class="left-section">
             <div class="content">
                 <h1 class="title"><< hello!👋 >></h1>
                 <p class="desc">i'm Martina <span style="opacity: 0.3;">[Mystically]</span></p>
-                <p class="desc"><span style="color: rgb(91, 207, 250);">she</span>/<span style="color: rgb(245, 171, 185);">her</span>/they - 16y <span style="opacity: 0.3;">[31 August]</span></p>
+                <p class="desc" id="age"><span style="color: rgb(91, 207, 250);">she</span>/<span style="color: rgb(245, 171, 185);">her</span>/they - age <span style="opacity: 0.3;">[31 August]</span></p>
                 <hr color="#212121" size="1px">
-                <p class="desc" style="font-size: 1.2rem;">"passionate" coder <span style="opacity: 0.3;">in Godot, Kotlin, C#, Python</span></p>
+                <p class="desc" style="font-size: 1.2rem;">"passionate" coder <span style="opacity: 0.3;">["Godot", "Kotlin", "C#", "and a little bit of everything else"]</span></p>
                 <p class="desc" style="font-size: 1.2rem;">occasionally i also compose music</p>
                 <p class="desc" style="font-size: 1.2rem;">
                     i can speak                     
@@ -479,19 +478,19 @@
                     fluently.</p><br>
 
                 <div class="links">
-                    <a href="https://youtube.com/Mystically" target="_blank">
+                    <a href="https://youtube.com/Mystically" target="_blank" rel="noopener noreferrer">
                         <svg class="link link-l" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z" />
                         </svg>
                     </a>
 
-                    <a href="https://github.com/Mystically11" target="_blank" aria-label="GitHub - Mystically11">
+                    <a href="https://github.com/Mystically11" target="_blank" rel="noopener noreferrer">
                         <svg class="link link-r" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                         </svg>
                     </a>
 
-                    <a href="https://mystically.bsky.social" target="_blank">
+                    <a href="https://mystically.bsky.social" target="_blank" rel="noopener noreferrer">
                         <svg class="link link-l" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364q.204-.03.415-.056q-.207.033-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a9 9 0 0 1-.415-.056q.21.026.415.056c2.67.297 5.568-.628 6.383-3.364c.246-.828.624-5.79.624-6.478c0-.69-.139-1.861-.902-2.206c-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8" />
                         </svg>
@@ -540,8 +539,8 @@
         <div class="right-section"></div>
 
         
-        <div class="changelog hidden">
-            <button class="close-changelog"><i class="fa-solid fa-xmark"></i></button>
+        <div class="changelog hidden" role="dialog" aria-modal="true" aria-labelledby="changelog-title">
+            <button class="close-changelog" aria-label="close changelog"><i class="fa-solid fa-xmark"></i></button>
             <h2>Changelog</h2>
             <div class="changelog-filter">
                 <label>
@@ -556,7 +555,7 @@
             <h3 class="changelog-empty" style="display: none; color: gray;">nothing to show 💔</h3>
             <div class="changelog-content">
                 <div class="changelog-container changelog-current" data-type="patch">
-                    <h3>Patch 2.0.4 <span style="opacity: 0.3;">[30/08/25]</span></h3>
+                    <h3>Patch 2.0.5 <span style="opacity: 0.3;">[02/09/25]</span></h3>
                     <ul>
                         <li>add  Somewhat actually functioning preloading of images</li>
                         <li>small fixes</li>
@@ -623,6 +622,8 @@
                     const containers = document.querySelectorAll('.changelog-container');
                     const bruh = document.querySelector('.changelog-empty');
 
+                    const ageText = document.getElementById('age');
+
                     function apply_filter() {
                         const active = Array.from(checkbox)
                         .filter(checkbox => checkbox.checked)
@@ -647,6 +648,10 @@
                     checkbox.forEach(checkbox => {
                         checkbox.addEventListener('change', apply_filter);
                     });
+
+                    if (ageText.innerHTML.includes('age')) {
+                        ageText.innerHTML = ageText.innerHTML.replace('age', getBirthday() + 'y');
+                    }
                 });
             </script>
         </div>

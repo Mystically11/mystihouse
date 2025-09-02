@@ -14,10 +14,8 @@ function getBirthday() {
 
     let age = year - birthYear;
     if (today == birthday) age--;
-
     if (today > birthday) birthday.setFullYear(year + 1);
 
-    const daysUntil = Math.ceil((birthday - today) / (86400000)); 
-
-    return daysUntil >= 0 && daysUntil <= 365 ? `i will be ${age} in ${daysUntil} days` : `it's my birthday! i'm ${age} now`;
+    //const daysUntil = Math.ceil((birthday - today) / (86400000)); 
+    return age;
 }
